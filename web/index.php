@@ -61,9 +61,9 @@ $result = pg_query($pg_conn, "SELECT relname FROM pg_stat_user_tables WHERE sche
 print "<pre>\n";
 
 if (!pg_num_rows($result)) {
-  print("Your connection is working, but your database is empty.\nFret not. This is expected for new apps.\n");
+  echo "Your connection is working, but your database is empty\n";
 } else {
-  print "Tables in your database:\n";
+  echo "Tables in your database:\n";
   while ($row = pg_fetch_row($result)) { print("- $row[0]\n"); }
 }
 print "\n";
