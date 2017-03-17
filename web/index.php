@@ -1,5 +1,5 @@
 <?php
-
+/*
 require('../vendor/autoload.php');
 
 $app = new Silex\Application();
@@ -49,5 +49,6 @@ $app->get('/cowsay', function() use($app) {
 echo "Hello World";
 
 $app->run();
+*/
 ?>
 
