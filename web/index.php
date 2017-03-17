@@ -1,8 +1,8 @@
 <?php
 echo "hello";
 
-require('vendor/autoload.php');
-
+require('/vendor/autoload.php');
+echo "after require";
 $app = new Silex\Application();
 $app['debug'] = true;
 $DATABASE_URL = "postgres://wsktsvaretvdmj:234109bb12c27368ebfbb9fc085679ddd2e1e6ed338f2ccd4737957e970bf43f@ec2-54-75-248-193.eu-west-1.compute.amazonaws.com:5432/d4dfkncd7c1kqj";
