@@ -10,7 +10,7 @@ function pg_connection_string_from_database_url() {
 $pg_conn = pg_connect(pg_connection_string_from_database_url());
 
 
-$result = pg_query($pg_conn, "SELECT relname FROM pg_stat_user_tables WHERE schemaname='public'");
+$result = pg_query($pg_conn, "SELECT relname FROM pg_stat_user_tables");
 print "<pre>\n";
 
 if (!pg_num_rows($result)) {
