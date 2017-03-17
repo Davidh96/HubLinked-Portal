@@ -49,5 +49,5 @@ $app->get('/cowsay', function() use($app) {
 echo "Hello World";
 
 $app->run();
-
+?>
 
