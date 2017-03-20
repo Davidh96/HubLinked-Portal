@@ -1,32 +1,5 @@
-<<<<<<< HEAD
-# php-getting-started
+#HubLinked Portal
 
-A barebones PHP app that makes use of the [Silex](http://silex.sensiolabs.org/) web framework, which can easily be deployed to Heroku.
+Group project with 6 members spread across Germany, Ireland, China, and Korea in which the goal is to make a functional Online Web Portal for the Dublin Institute of Technology and its industry and 3rd level partners.
 
-This application supports the [Getting Started with PHP on Heroku](https://devcenter.heroku.com/articles/getting-started-with-php) article - check it out.
-
-## Deploying
-
-Install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
-
-```sh
-$ git clone git@github.com:heroku/php-getting-started.git # or clone your own fork
-$ cd php-getting-started
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-
-or
-
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-## Documentation
-
-For more information about using PHP on Heroku, see these Dev Center articles:
-
-- [Getting Started with PHP on Heroku](https://devcenter.heroku.com/articles/getting-started-with-php)
-- [PHP on Heroku](https://devcenter.heroku.com/categories/php)
-=======
-# HubLinked-Portal
->>>>>>> 829896966263f88044f419c3a0f7f588435cc190
+The aim of this is to provide student of the DIT and its partner universities in the EU and Korea with a one stop service in which they can view and apply for upcoming opportunities regarding work experience and work placement with industry partners or view and apply for erasmus opportunities. With this, each partner is able to advertise their own opportunity as well as state details about the location, institution/company, and country which might be relevant to interested students. 
