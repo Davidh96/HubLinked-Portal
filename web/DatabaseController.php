@@ -21,16 +21,13 @@
 			mysqli_select_db($conn, $db);
 	}
 
-
-
 	//preload database with tables
 	function makeTables($conn) {
-		$location = "CREATE TABLE IF NOT EXISTS location (
+		$location = "CREATE TABLE IF NOT EXISTS
+		location (
 							loc_id INT(11) unsigned auto_increment not null,
-							name VARCHAR(30) not null,
-							street varchar(30),
+							loc_name VARCHAR(30) not null,
 							city varchar(30),
-							zipcode INT(15),
 							country varchar(30),
 							primary key (loc_id)
 							)";
@@ -42,8 +39,10 @@
 
 		$company = "CREATE TABLE IF NOT EXISTS company (
 							comp_id VARCHAR(11) not null,
-							comp_name VARCHAR(30),
-							industry VARCHAR(30),
+							comp_name VARCHAR(30) not null,
+							industry VARCHAR(50),
+							comp_email VARCHAR(50) not null,
+							comp_pw VARCHAR (50) not null,
 							primary key (comp_id)
 						);";
 
@@ -57,6 +56,8 @@
 							inst_id VARCHAR(11) not null,
 							inst_name VARCHAR(30),
 							location int(11) unsigned,
+							inst_email VARCHAR(50) not null,
+							inst_pw VARCHAR(50) not null,
 							primary key (inst_id),
 							FOREIGN KEY (location) REFERENCES location(loc_id)
 						);";
@@ -69,14 +70,16 @@
 
 		$student_table = "CREATE TABLE IF NOT EXISTS student (
 							stu_no VARCHAR(11) NOT NULL,
-							s_name VARCHAR(31) not null,
-							s_inst VARCHAR(11) not null,
+							stu_name VARCHAR(31) not null,
+							stu_inst VARCHAR(11) not null,
+							stu_email VARCHAR(50) not null,
+							stu_pw VARCHAR(50) not null,
 							primary key (stu_no),
-							foreign key (s_inst) references institution(inst_id)
+							foreign key (stu_inst) references institution(inst_id)
 							)";
 
 		if (mysqli_query($conn, $student_table)) {
-			echo "Location Table created successfully" . "<br>";
+			echo "Student Table created successfully" . "<br>";
 		} else {
 			echo "Error creating table: " . mysqli_error($conn) . "<br>";
 		}
@@ -115,6 +118,9 @@
 			echo "Error creating table: " . mysqli_error($conn) . "<br>";
 		}
 
+
 	}
+
+
 
 ?>
