@@ -5,24 +5,32 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #E0E0E0;
     position: fixed;
-    top: 0;
+    top: 10;
     width: 100%;
+	
 }
 
 li {
     float: right;
+	
+}
+
+#pos
+{
+	margin-top:0px;
+	
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
+	display: block;
+    color: BLACK;
     padding: 14px 16px;
     text-decoration: none;
+	
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+    background-color:	#708090;
 }
