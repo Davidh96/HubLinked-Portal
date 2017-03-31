@@ -1,6 +1,12 @@
-#logo
+#full_logo
 {
 	margin-top:-30px;
+	margin-left:-10px;
+}
+
+#logo
+{
+	margin-top:-10px;
 	margin-left:-10px;
 }
 
