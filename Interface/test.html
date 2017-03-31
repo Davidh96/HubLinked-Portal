@@ -1,0 +1,59 @@
+<html>
+<head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+
+      
+</head>
+
+
+<body class="image">
+
+  <div class="container">
+    <div class = "jumbotron">
+      <a href="index.php" id="noDecLink"><h2 class="title-text main-header" >Foodle Recipes</h2></a>
+    </div>
+
+    <div class = "Jumbotron">
+    <h2 class="header-text">Register</h2>
+    <hr>
+
+    <!-- form for registering a new user-->
+    <form  method="post" action="" enctype="multipart/form-data">
+      <!--insert a username-->
+      <div class="form-group">
+        <label for="Name">Username: *</label>
+        <input type="text" class="form-control" name="Name" required>
+      </div>
+
+      <!-- insert a paswword-->
+      <div class="form-group">
+        <label for="password">Password: *</label>
+        <input type="password" class="form-control" name="Password" required>
+      </div>
+
+      <!--confirm password-->
+      <div class="form-group">
+        <label for="confpassword">Confirm Password: *</label>
+        <input type="password" class="form-control" name="Password-Confirm" required>
+      </div>
+
+      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="reset" class="btn btn-default">Reset</button>
+    </form>
+
+    <?php
+      //display any error messages
+      if(isset($msg))
+      {
+        echo '<h5 style="color:red" id="errorMsg">' . $msg . '</h5>';
+      }
+    ?>
+    </div>
+  </div>
+
+</body>
