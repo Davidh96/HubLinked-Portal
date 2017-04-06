@@ -30,11 +30,40 @@
 		<li><a href="user_account.php"><span class="glyphicon glyphicon-user"></span> Me</a></li>
       </ul>
     </div>
-  </div>
 </nav>
 
-<div id = "notification-heading"> Notifications </div>
-<div id = "display-notifications">
+
+<nav class="navbar navbar-default" id = "search_bar" >
+  <div class="container-fluid" >
+	
+	 <form class="navbar-form navbar-left" >
+	 
+        <div class="form-group" id = "Search_box">
+          <input type="text" class="form-control" placeholder="Search by Skill, Company, Title">
+        </div>
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+	</form>
+	<form class = "navbar-form navbar-right" id = "Search_box"  >
+		<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search by Location">
+        </div>
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+      </form>
+	
+	</div>
+</nav>
+
+ <div class="container">
+<div class="jumbotron">
+<div id = "search_results"> X results found </div>
+<div id = "sort_by"> Sort By : Date posted</div>
+
+
+<form method="post" action="" enctype="multipart/form-data" id = "layout">
+	
+	
+<div >
+
     <table width="200" class="table table-condensed">
 		<tr>
 			<td> Logo </td>
@@ -50,29 +79,16 @@
 		</tr>
 	</table>
 </div>
-<!-- Displaying notifications
-<H1> Notifications </H1>
-<div class="each">
-    <table width="200" class="table table-condensed">
-       
-        
-		php
-        	while( $company=mysql_fetch_array($result)) {
+</form>
+</div>
 
-        		echo "<tr>";
 
-        		echo "<td>".$company['Logo']."</td>";
+	
+	
+	
+	
 
-        		echo "<td>".$company['Name']." posted a new job </td>";
 
-        		echo "<td>".$company['job_openings']."</td>";
-
-        		echo "</tr>";
-
-        	}//end while*/
-        end php
-</table>
-</div>-->
         
   
 
