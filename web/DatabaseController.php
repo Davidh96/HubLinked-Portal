@@ -119,8 +119,6 @@
 		}
 
 
-		//insert dummy data
-
 		//prepare insertion statement for Location details
 		$stmt = $conn->prepare("INSERT INTO
 		location (loc_id,loc_name,city,country) VALUES (?,?,?,?)");
