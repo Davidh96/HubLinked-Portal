@@ -1,7 +1,9 @@
 <html>
 <head>
     <?php
+    echo "before require";
     require ("pg_config.php");
+    
     ?>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
