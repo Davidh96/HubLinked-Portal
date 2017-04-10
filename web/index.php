@@ -4,8 +4,11 @@
     echo "before require";
     require ("pg_config.php");
     require ("functions.php");
+    echo "after fun";
     if(logged_in()){
+        echo " in logged in";
         include "StudentLogin.php";
+        echo " after sl";
     }
     else 
     {
