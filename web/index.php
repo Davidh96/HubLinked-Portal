@@ -2,7 +2,8 @@
 <head>
     <?php
     require "functions.php";
-    echo "before require";
+    echo "before require";?>
+    <?php
     require "pg_config.php";
     echo " after config";
     
