@@ -4,7 +4,7 @@
     echo "before require";
     require ("pg_config.php");
     echo " after config";
-    include ("functions.php");
+    require ("functions.php");
     echo "after fun";
     if(logged_in()){
         echo " in logged in";
