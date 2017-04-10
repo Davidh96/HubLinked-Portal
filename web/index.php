@@ -3,7 +3,7 @@
     <?php
     require "functions.php";
     echo "before require";
-    require ("pg_config.php");
+    require "pg_config.php";
     echo " after config";
     
     echo "after fun";
