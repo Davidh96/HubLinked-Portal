@@ -7,14 +7,15 @@
     echo " after config";
     
     echo "after fun";
+    
     if(logged_in()){
-        echo " in logged in";
-        include "StudentLogin.php";
-        echo " after sl";
+        
     }
     else 
     {
-        include "register.php";
+        echo " in logged in";
+        include "StudentLogin.php";
+        echo " after sl";
     }
     
     ?>
