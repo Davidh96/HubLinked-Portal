@@ -7,7 +7,7 @@ function pg_changeURL() {
 
 function pg_connect_to_database(){
     echo "in the function";
-    $pg_conn = pg_connect(changeURL());
+    $pg_conn = pg_connect(pg_changeURL());
     
 }
 
