@@ -20,13 +20,13 @@
                 <!--insert a username-->
                 <div class="form-group">
                   <label for="Name">Username:</label>
-                  <input type="text" class="form-control" name="username" required>
+                  <input type="text" class="form-control" name="username" id="login_username" required>
                 </div>
 
                 <!-- insert a paswword-->
                 <div class="form-group">
                   <label for="password">Password:</label>
-                  <input type="password" class="form-control" name="password" required>
+                  <input type="password" class="form-control" name="password" id="login_password" required>
                 </div>
 
                 <button type="submit" class="btn btn-default">Submit</button>

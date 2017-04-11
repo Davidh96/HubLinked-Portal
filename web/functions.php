@@ -72,4 +72,6 @@ function get_college_details($cid){
     return result;
 }
 
+function 
+
 ?>
