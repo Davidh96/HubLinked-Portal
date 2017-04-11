@@ -1,15 +1,10 @@
 <html>
 <head>
     <?php
-    //require 'functions.php';
-    echo "before require";
     require 'pg_config.php';
-    echo " after config";
-    
-    echo "after fun";
     
     if(logged_in()){
-        
+        require 'Homepage.php';  //?      
     }
     else 
     {
