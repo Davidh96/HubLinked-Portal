@@ -74,4 +74,4 @@ function get_college_details($cid){
 
 function 
 
-?>
+?> 
