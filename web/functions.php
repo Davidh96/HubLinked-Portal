@@ -17,13 +17,15 @@ function pg_connect_to_database(){
     } else {
         echo 'there has been an error connecting';
     }
-  */
+ "pgsql:dbname=$dbname;host=$dbhost;user=$dbuser;password=$dbpass" */
 $dbuser = 'wsktsvaretvdmj';
 $dbpass = '234109bb12c27368ebfbb9fc085679ddd2e1e6ed338f2ccd4737957e970bf43f';
 $host = 'ec2-54-75-248-193.eu-west-1.compute.amazonaws.com';
 $dbname='d4dfkncd7c1kqj';
 try{
-$connec = new PDO("pgsql:dbname=$dbname;host=$dbhost;user=$dbuser;password=$dbpass");
+$DATABASE_URL= '
+postgres://wsktsvaretvdmj:234109bb12c27368ebfbb9fc085679ddd2e1e6ed338f2ccd4737957e970bf43f@ec2-54-75-248-193.eu-west-1.compute.amazonaws.com:5432/d4dfkncd7c1kqj';
+$connec = new PDO(parse_url(getenv('$DATABASE_URL')));
 }catch (PDOException $e) {
 echo "Error : " . $e->getMessage() . "<br/>";
 die();
