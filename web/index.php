@@ -11,6 +11,7 @@
         echo " in logged in";
         include "StudentLogin.php";
         echo " after sl";
+        pg_check_for_tables();
     }
     
     ?>
