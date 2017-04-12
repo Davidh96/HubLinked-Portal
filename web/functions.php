@@ -30,6 +30,7 @@ $myPDO = new PDO('pgsql:host=ec2-54-75-248-193.eu-west-1.compute.amazonaws.com;d
 echo "Error : " . $e->getMessage() . "<br/>";
 die();
 }
+    return $myPDO;
 }
 
 function pg_check_table($thing, $table, $data){
@@ -43,7 +44,8 @@ function pg_check_table($thing, $table, $data){
 
 function pg_check_for_tables(){
     echo "b";
-    //$conn = pg_connect(changeURL());
+    $myPDO = pg_connect_to_database();
+    echo "c";
     $result = $myPDO->query("select * from information_schema.tables");
 print "<pre>\n";
     echo "here";
