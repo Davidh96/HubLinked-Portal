@@ -24,7 +24,7 @@ $host = 'ec2-54-75-248-193.eu-west-1.compute.amazonaws.com';
 $dbname='d4dfkncd7c1kqj';
 $port='5432';
 try{
-$connec = new PDO("pgsql:dbname=$dbname;host=$dbhost;user=$dbuser;password=$dbpass;port=$port");
+$connec = new PDO("pgsql:dbname=$dbname;host=$dbhost;user=$dbuser;password=$dbpass;port=$port;sslmode=require");
 }catch (PDOException $e) {
 echo "Error : " . $e->getMessage() . "<br/>";
 die();
