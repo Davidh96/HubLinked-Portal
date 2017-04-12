@@ -11,7 +11,7 @@ function pg_changeURL() {
 
 function pg_connect_to_database(){
     //echo "in the function";
-    $pg_conn = pg_connect(pg_changeURL());
+    $pg_conn = pg_connect("host=ec2-54-75-248-193.eu-west-1.compute.amazonaws.com Port=5432 dbname=d4dfkncd7c1kqj user=wsktsvaretvdmj password=234109bb12c27368ebfbb9fc085679ddd2e1e6ed338f2ccd4737957e970bf43f sslmode=require");
     if($pg_conn) {
        echo 'connected';
     } else {
