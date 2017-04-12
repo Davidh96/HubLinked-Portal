@@ -43,7 +43,7 @@ function pg_check_table($thing, $table, $data){
 
 function pg_check_for_tables(){
     //$conn = pg_connect(changeURL());
-    $result = pg_query($pg_conn, "SELECT * FROM pg_catalog.pg_tables");
+    $result = $myPDO->query("SELECT * FROM pg_catalog.pg_tables");
 print "<pre>\n";
 
 echo "<table>\n";
