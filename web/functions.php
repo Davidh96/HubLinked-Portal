@@ -25,7 +25,7 @@ function pg_check_table($thing, $table, $data){
 
 
 function pg_check_for_tables(){
-    $conn = pg_connect(changeURL());
+    //$conn = pg_connect(changeURL());
     $result = pg_query($pg_conn, "SELECT relname FROM pg_stat_user_tables WHERE schemaname='public'");
 print "<pre>\n";
 
