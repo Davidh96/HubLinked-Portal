@@ -11,13 +11,23 @@ function pg_changeURL() {
 
 function pg_connect_to_database(){
     //echo "in the function";
-    $pg_conn = pg_connect("host=ec2-54-75-248-193.eu-west-1.compute.amazonaws.com Port=5432 dbname=d4dfkncd7c1kqj user=wsktsvaretvdmj password=234109bb12c27368ebfbb9fc085679ddd2e1e6ed338f2ccd4737957e970bf43f sslmode=require");
+/*    $pg_conn = pg_connect("host=ec2-54-75-248-193.eu-west-1.compute.amazonaws.com Port=5432 dbname=d4dfkncd7c1kqj user=wsktsvaretvdmj password=234109bb12c27368ebfbb9fc085679ddd2e1e6ed338f2ccd4737957e970bf43f sslmode=require");
     if($pg_conn) {
        echo 'connected';
     } else {
         echo 'there has been an error connecting';
     }
-    
+  */
+$dbuser = 'wsktsvaretvdmj';
+$dbpass = '234109bb12c27368ebfbb9fc085679ddd2e1e6ed338f2ccd4737957e970bf43f';
+$host = 'ec2-54-75-248-193.eu-west-1.compute.amazonaws.com';
+$dbname='d4dfkncd7c1kqj';
+
+$connec = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+}catch (PDOException $e) {
+echo "Error : " . $e->getMessage() . "<br/>";
+die();
+}
 }
 
 function pg_check_table($thing, $table, $data){
