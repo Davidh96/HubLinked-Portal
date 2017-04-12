@@ -45,17 +45,7 @@ function pg_check_for_tables(){
     //$conn = pg_connect(changeURL());
     $result = $myPDO->query("SELECT * FROM pg_catalog.pg_tables");
 print "<pre>\n";
-
-echo "<table>\n";
-while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
-    echo "\t<tr>\n";
-    foreach ($line as $col_value) {
-        echo "\t\t<td>$col_value</td>\n";
-    }
-    echo "\t</tr>\n";
-}
-echo "</table>\n";
-print "\n";
+    echo "here";
 }
 
 function get_company_details($cid){
