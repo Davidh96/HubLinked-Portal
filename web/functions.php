@@ -21,12 +21,14 @@ function pg_connect_to_database(){
     
 }
 
-function pg_check_table($thing, $table){
+function pg_check_table($thing, $table, $data){
     $conn = pg_connect(changeURL());
     $result = pg_query($pg_conn, "SELECT $thing FROM  $table WHERE $thing = $data");
     
     return $result;
 }
+
+
 
 function pg_check_for_tables(){
     
@@ -78,6 +80,12 @@ function get_college_details($cid){
     return result;
 }
 
-function 
+function pg_CheckUserExists($username,$pass){
+    //include 'pg_config.php';
+    $conn = pg_connect(changeURL());
+    $result = pg_query($pg_conn, "SELECT username FROM  WHERE username = $username and password = $pass");
+    
+    
+}
 
 ?> 
