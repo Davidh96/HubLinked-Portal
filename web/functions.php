@@ -12,7 +12,7 @@ function pg_changeURL() {
 function pg_connect_to_database(){
     //echo "in the function";
     $pg_conn = pg_connect(pg_changeURL());
-    if($connection) {
+    if($pg_conn) {
        echo 'connected';
     } else {
         echo 'there has been an error connecting';
