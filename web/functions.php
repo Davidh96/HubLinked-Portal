@@ -29,12 +29,15 @@ function pg_check_for_tables(){
     $result = pg_query($pg_conn, "SELECT * FROM pg_catalog.pg_tables");
 print "<pre>\n";
 
-if (!pg_num_rows($result)) {
-  echo "Your connection is working, but your database is empty\n";
-} else {
-  echo "Tables in your database:\n";
-  while ($row = pg_fetch_row($result)) { print("- $row[0]\n"); }
+echo "<table>\n";
+while ($line = pg_fetch_array($result, null, PGSQL_ASSOC)) {
+    echo "\t<tr>\n";
+    foreach ($line as $col_value) {
+        echo "\t\t<td>$col_value</td>\n";
+    }
+    echo "\t</tr>\n";
 }
+echo "</table>\n";
 print "\n";
 }
 
