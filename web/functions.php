@@ -5,10 +5,6 @@ function logged_in(){
 
 }
 
-function pg_changeURL() {
-  extract(parse_url($_ENV["postgres://wsktsvaretvdmj:234109bb12c27368ebfbb9fc085679ddd2e1e6ed338f2ccd4737957e970bf43f@ec2-54-75-248-193.eu-west-1.compute.amazonaws.com:5432/d4dfkncd7c1kqj"]));
-  return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
-}
 function pg_connect_to_database(){
 $dbuser = 'wsktsvaretvdmj';
 $dbpass = '234109bb12c27368ebfbb9fc085679ddd2e1e6ed338f2ccd4737957e970bf43f';
@@ -32,8 +28,6 @@ function pg_check_table($thing, $table, $data){
     return $result;
 }
 
-
-
 function pg_check_for_tables(){
     echo "b";
     $myPDO = pg_connect_to_database();
@@ -44,7 +38,7 @@ print "<pre>\n";
 }
 
 function get_company_details($cid){
-    include ("config.php");
+   // include ("config.php");
     mysqli_select_db($conn, $db);
     $stmt = $conn->prepare("SELECT * from company where comp_id = ?");
     $stmt->bind_param("s",$cid);
@@ -56,7 +50,7 @@ function get_company_details($cid){
 }
 
 function get_student_details($sid){
-    include ("config.php");
+ //   include ("config.php");
     mysqli_select_db($conn, $db);
     $stmt = $conn->prepare("SELECT * from stu_name where stu_no = ?");
     $stmt->bind_param("s",$sid);
@@ -68,7 +62,7 @@ function get_student_details($sid){
 }
 
 function get_college_details($cid){
-    include ("config.php");
+//    include ("config.php");
     mysqli_select_db($conn, $db);
     $stmt = $conn->prepare("SELECT * from institution where inst_id = ?");
     $stmt->bind_param("s",$cid);
@@ -82,10 +76,14 @@ function get_college_details($cid){
 
 function pg_CheckUserExists($username,$pass){
     //include 'pg_config.php';
-    $conn = pg_connect(changeURL());
-    $result = pg_query($pg_conn, "SELECT username FROM  WHERE username = $username and password = $pass");
-    
-    
+    try{
+    $myPDO = pg_connect_to_database();
+    $sql = $myPDO->query ("");
+        
+    }  catch(PDOException $e){
+    echo $e->getMessage();
+}    
+    return true;
 }
 
 

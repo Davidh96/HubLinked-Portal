@@ -1,8 +1,8 @@
 <?php
 require 'pg_config.php';
-require 'functions.php';
-$username = test_input($_POST['login_username']);
-$pass = test_input($_POST['login_password']);
-$uservalid = pg_checkStudentExists($username,$pass);
+//require 'functions.php';
+$username = ($_POST['username']);
+$pass = ($_POST['password']);
+$uservalid = pg_checkUserExists($username,$pass);
 return $uservalid;
 ?>
