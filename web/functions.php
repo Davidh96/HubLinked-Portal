@@ -79,7 +79,7 @@ function get_college_details($cid){
     return result;
 }
 
-<<<<<<< HEAD
+
 function pg_CheckUserExists($username,$pass){
     //include 'pg_config.php';
     $conn = pg_connect(changeURL());
@@ -87,8 +87,6 @@ function pg_CheckUserExists($username,$pass){
     
     
 }
-=======
-function 
->>>>>>> 58b73b985b5062ab63322f2afd983490eb14dff0
+
 
 ?> 
