@@ -63,3 +63,68 @@
 }
 
 
+#applied
+{
+	margin-left:100px;
+	font-size:30px;
+}
+#applied_button
+{
+	margin-left:100px;
+}
+#return_button
+{
+	margin-left:300px;
+}
+#college_logo
+{
+	
+	float:left;
+	margin-left:300px;
+	margin-top:-10px;
+}
+#course_name
+{
+	margin-top:10px;
+	font-size:20px;
+	float:left;
+}
+
+#college_name
+{
+	
+	font-size:15px;
+
+}
+#apply_button
+{
+	margin-top:20px;
+	float: right;
+	margin-right: 200px;
+}
+#subscribe_button
+{
+	margin-top:20px;
+	float:right;
+	margin-right: 10px;
+}
+#information
+{
+	float:left;
+	
+}
+
+#skills
+{
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-top: 80px;
+
+	font-size:15px;
+}
+#weDo
+{
+	padding-top: 80px;
+	float:left;
+	font-size:15px;
+}
