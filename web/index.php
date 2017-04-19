@@ -1,6 +1,6 @@
 <html>
 <head>
-    
+
      <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -8,24 +8,24 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="jquery.js"></script>
-    
+
     <?php
     require 'pg_config.php';
-    
+
     if(logged_in()){
-        require 'Homepage.php';  //?      
+        require 'Homepage.php';  //?
     }
-    else 
+    else
     {
         //echo " in logged in";
         include "StudentLogin.php";
         //echo " after sl";
 
     }
-    
+
     ?>
     </head>
-<!--    
+<!--
     <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
