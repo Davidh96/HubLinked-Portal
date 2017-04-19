@@ -10,8 +10,7 @@
     <script src="jquery.js"></script>
 
     <?php
-    require 'pg_config.php';
-
+    require 'functions.php';
 
     if(logged_in()){
         require 'Homepage.php';  //?
@@ -19,7 +18,8 @@
     }
     else
     {
-        include "StudentLogin.php";
+        //include 'StudentLogin.php';
+    include 'interface/loginpage.html';
     }
 
     ?>

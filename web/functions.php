@@ -47,7 +47,7 @@ function get_company_details($cid){
     $result = $stmt->fetch();
     //echo $cname;
     return result;
-}s
+}
 
 function get_student_details($sid){
  //   include ("config.php");
@@ -71,7 +71,7 @@ function get_college_details($cid){
     $result = $stmt->fetch();
     //echo $cname;
     return result;
-}s
+}
 
 function pg_CheckUserExists($username,$pass){
     //include 'pg_config.php';

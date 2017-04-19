@@ -4,7 +4,7 @@ require 'functions.php';
 //echo " after require";
 pg_connect_to_database();
 //echo "connected to postgres database" ;
-
+/*
 function create_tables(){
   //postresql table creation
   $sql =<<<EOF
@@ -144,5 +144,5 @@ function createData(){
   pg_query($db, "INSERT INTO application VALUES (4,3,'C111222','Approved');");
 
 }
-
+*/
 ?>

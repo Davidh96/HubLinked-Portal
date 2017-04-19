@@ -13,7 +13,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="home.php"><img src = "full_logo.png" style="width:125px;height:85px;" id = "full_logo"></a>
+      <a class="navbar-brand" href="home.php"><img src="interface/full_logo.png" style="width:125px;height:85px"  id="full_logo"></a>
     </div>
       <form class="navbar-form navbar-left">
         <div class="form-group">
@@ -21,13 +21,12 @@
         </div>
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
       </form>
-     <form class="navbar-form navbar-right">
-        <input type = "text" placeholder = "Email"class="form-control"><t> 
-        <input type = "password" placeholder= "Password" class="form-control">
+     <form class="navbar-form navbar-right" id="login_form">
+         <input type = "text" placeholder ="Email"class="form-control" name="email" id="login_email"><t> </t>
+        <input type = "password" placeholder= "Password" class="form-control" name="password" id="login_password">
 		<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Login</button>
-      </form>
+         </form>
     </div>
-  </div>
 </nav>
 
   <div class="container">
