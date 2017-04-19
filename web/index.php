@@ -12,15 +12,13 @@
     <?php
     require 'pg_config.php';
     
+    //checking if the user is logged in
     if(logged_in()){
-        require 'Homepage.php';  //?      
+        require 'Homepage.php';      
     }
     else 
     {
-        //echo " in logged in";
         include "StudentLogin.php";
-        //echo " after sl";
-
     }
     
     ?>
