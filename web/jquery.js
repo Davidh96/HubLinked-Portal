@@ -7,6 +7,7 @@ $(document).ready(function(){
         //alert("asd");
         e.preventDefault(e);//preventing the page from refreshing
         var data = $("#login_form").serialize();//getting the data from the login form
+        //alert(data);
        //using ajax to send the form data to php page to check if user exists 
        $.ajax({
            url : "LoginUser.php",
@@ -14,10 +15,11 @@ $(document).ready(function(){
            data: data,
            success: function(result){
             if(result){//if the user does not exist
-                alert("in r");
+                alert("in jr");
                 //   $("#login_error").css("display","inline");
             }
-            else{//if the user exists   
+            else{//if the user exists  
+                
             }
         }
         })
