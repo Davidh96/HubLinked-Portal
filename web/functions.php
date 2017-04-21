@@ -1,7 +1,7 @@
 <?php
 
 function logged_in(){
-    return false;
+    return true;
 
 }
 
