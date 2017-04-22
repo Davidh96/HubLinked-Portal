@@ -1,7 +1,7 @@
 <?php
-
+include 'init.php';
 function logged_in(){
-    return false;
+    return isset($_SESSION['user']);
 
 }
 
@@ -74,16 +74,79 @@ function get_college_details($cid){
 }
 
 function pg_CheckUserExists($username,$pass){
+    
     //include 'pg_config.php';
     try{
     $myPDO = pg_connect_to_database();
-    $sql = $myPDO->query ("");
-        
+    $sql = $myPDO->query ("SELECT * FROM student");
+        echo "query done";
+        if($sql->fetch())
+        {
+    while($row = $sql->fetch()){
+        echo "number : " ,$row["stu_no"],"  name: ",$row["stuname"] ,"e: ",$row["stu_email"]    ,"p: ",$row["stu_pw"]  ,"</br>";
+    }
+        }
+        else{
+            echo " its empty";
+        }
     }  catch(PDOException $e){
     echo $e->getMessage();
 }    
-    return true;
+    $_SESSION["user"] = "temp";
+    return 0;
+}
+
+function get_table_data($table){
+     try{
+    $myPDO = pg_connect_to_database();
+    $sql = $myPDO->query("SELECT * FROM student ;");
+   
+        echo "query done";
+       if($sql->fetch(PDO::FETCH_ASSOC))
+        {
+            while($row = $sql->fetch(PDO::FETCH_ASSOC)){
+                echo "number : " ,$row["stu_no"],"  name: ",$row["stuname"] ,"e: ",$row["stu_email"]    ,"p: ",$row["stu_pw"]  ,"</br>";
+            }
+        }
+        else{
+            echo " its empty";
+        }
+    }  catch(PDOException $e){
+    echo $e->getMessage();
+}    
 }
 
 
+
+function createData(){
+  pg_query($db, "INSERT INTO location VALUES (1,'Dublin','Dublin','Ireland');");
+  pg_query($db, "INSERT INTO location VALUES (2,'Galway','Galway','Ireland');");
+  pg_query($db, "INSERT INTO location VALUES (3,'HaiDian District','Beijing','China');");
+  pg_query($db, "INSERT INTO location VALUES (4,'Buk-gu','Daegu','South Korea');");
+  pg_query($db, "INSERT INTO location VALUES (5,'Darmstadt','Darmstadt','Germany');");
+
+  pg_query($db, "INSERT INTO company VALUES ('Intel','Intel Corporation','Semiconductor Manufacturing','opportunities@intel.com','inTel');");
+  pg_query($db, "INSERT INTO company VALUES ('Microsoft','Microsoft Corporation','Technology Company','opportunities@microsoft.com','microSoft');");
+  pg_query($db, "INSERT INTO company VALUES ('Google','Google Inc','Technology Company','opportunities@google.com','gooGle');");
+  pg_query($db, "INSERT INTO company VALUES ('RedHat','Red Hat Software','Software Company','opportunities@redhat.com','redHat');");
+
+  pg_query($db, "INSERT INTO institution VALUES ('DIT','Dublin Institute of Technology',1,'exchange@dit.ie','dIt');");
+  pg_query($db, "INSERT INTO institution VALUES ('BUAA','Beihang University',2,'exchange@buaa.cn','buAa');");
+  pg_query($db, "INSERT INTO institution VALUES ('KNU','Kyungpook National University',3,'exchange@knu.com','kNu');");
+  pg_query($db, "INSERT INTO institution VALUES ('TUDarmstadt','Technische Universität Darmstadt',4,'exchange@tud.de','tUd');");
+
+  pg_query($db, "INSERT INTO student VALUES ('C14464428','David Hunt','DIT','c14464428@mydit.ie','c14464428');");
+  pg_query($db, "INSERT INTO student VALUES ('C111222','James MacArthur','DIT','c111222@mydit.ie','c111222');");
+  pg_query($db, "INSERT INTO student VALUES ('C123456','Mary MacArthur','DIT','c123456@mydit.ie','c123456');");
+
+  pg_query($db, "INSERT INTO opportunity VALUES (1,'Intel',1,'Intel Artificial Intelligence Academy','The Intel® Nervana™ AI Academy was created to increase accessibility to data, tools, training, and intelligent machines for a broad community of developers, academics, and start-ups.','Computing');");
+  pg_query($db, "INSERT INTO opportunity VALUES (2,'Microsoft',1,'Software Engineer','Are you passionate about writing shared systems and services which are used across the company to deliver applications and online content every day? Do you have a passion for enabling our company to deliver our products to an ever-evolving worldwide landscape of languages, cultures, and local markets?','Computing');");
+  pg_query($db, "INSERT INTO opportunity VALUES (3,'Microsoft',1,'Software Engineer','Are you passionate about writing shared systems and services which are used across the company to deliver applications and online content every day? Do you have a passion for enabling our company to deliver our products to an ever-evolving worldwide landscape of languages, cultures, and local markets?','Computing');");
+
+  pg_query($db, "INSERT INTO application VALUES (1,1,'C123456','Approved');");
+  pg_query($db, "INSERT INTO application VALUES (2,1,'C123456','Denied');");
+  pg_query($db, "INSERT INTO application VALUES (3,3,'C123456','Pending');");
+  pg_query($db, "INSERT INTO application VALUES (4,3,'C111222','Approved');");
+
+}
 ?> 
