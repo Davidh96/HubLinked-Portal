@@ -29,12 +29,24 @@ function pg_check_table($thing, $table, $data){
 }
 
 function pg_check_for_tables(){
-    echo "b";
-    $myPDO = pg_connect_to_database();
-    echo "c";
-    $result = $myPDO->query("select * from information_schema.tables");
-print "<pre>\n";
-    echo "here";
+  $db = pg_connect_to_database();
+    $result = $db->query("SELECT
+    table_schema || '.' || table_name
+FROM
+    information_schema.tables
+WHERE
+    table_type = 'BASE TABLE'
+AND
+    table_schema NOT IN ('pg_catalog', 'information_schema');");
+    try{
+        while ($row = $result->fetch()) {
+        echo "</br>";
+        echo $row[0];
+        echo "</br>";
+    }
+    }catch(PDOexception $e){
+        echo $e->getMessage();
+    }
 }
 
 function get_company_details($cid){
@@ -99,24 +111,22 @@ function pg_CheckUserExists($username,$pass){
 function get_table_data($table){
      try{
     $myPDO = pg_connect_to_database();
-    $sql = $myPDO->query("SELECT * FROM student ;");
-   
-        echo "query done";
-       if($sql->fetch(PDO::FETCH_ASSOC))
-        {
-            while($row = $sql->fetch(PDO::FETCH_ASSOC)){
-                echo "number : " ,$row["stu_no"],"  name: ",$row["stuname"] ,"e: ",$row["stu_email"]    ,"p: ",$row["stu_pw"]  ,"</br>";
+    $sql = $myPDO->query("SELECT * FROM $table");   
+        //echo "query done";
+            //echo "iNn";
+            while( $row = $sql->fetch()){
+                //echo "number : " ,$row["stu_no"],"  name: ",$row["stuname"] ,"e: ",$row["stu_email"]    ,"p: ",$row["stu_pw"]  ,"</br>";
+                echo " ", $row[0];
             }
-        }
-        else{
-            echo " its empty";
-        }
+        
+        //else{
+        //    echo " its empty";
+        //}
+        //echo "a";
     }  catch(PDOException $e){
     echo $e->getMessage();
 }    
 }
-
-
 
 function createData(){
   pg_query($db, "INSERT INTO location VALUES (1,'Dublin','Dublin','Ireland');");
@@ -148,5 +158,33 @@ function createData(){
   pg_query($db, "INSERT INTO application VALUES (3,3,'C123456','Pending');");
   pg_query($db, "INSERT INTO application VALUES (4,3,'C111222','Approved');");
 
+}
+
+function get_col_names($table){
+    $db = pg_connect_to_database();
+    echo " select column_name from information_schema.columns where
+table_name='$table'';";
+    $result = $db->query("select column_name from information_schema.columns where
+table_name='$table';");
+    try{
+        while ($row = $result->fetch()) {
+        echo "</br>";
+        echo $row[0];
+        echo "</br>";
+    }
+    }catch(PDOexception $e){
+        echo $e->getMessage();
+    }
+}
+
+function add_data($tab,$id,$n,$ci,$co){
+    $myPDO = pg_connect_to_database();
+    $stmt = $myPDO->prepare("INSERT INTO :t(loc_id, name, city,country) VALUES (:id,:n,:ci,:co)");
+    $stmt->bindParam(':t',$tab);
+    $stmt->bindParam(':id',$id);
+    $stmt->bindParam(':n',$n);
+    $stmt->bindParam(':ci',$ci);
+    $stmt->bindParam(':co',$co);
+    $stmt->execute();   
 }
 ?> 

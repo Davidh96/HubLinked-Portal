@@ -36,5 +36,12 @@
       </ul>
      </div>
    </div>
+    <?php
+    //include 'interface/view_opptnity.php';
+    //pg_check_for_tables(); 
+    //get_col_names("application");
+    //add_data(1,'Dublin','Dublin','Ireland');
+    //get_table_data('company');
+    ?>
 </body>
 </html>

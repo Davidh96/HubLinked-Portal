@@ -13,16 +13,20 @@
     require 'functions.php';
 
     if(logged_in()){
-        echo"asd";
+        //echo"asd";
+        //echo $_SESSION["user"];
         require 'Homepage.php';  //?
-
+        get_col_names("location");
+        //get_table_data("student");
+        //add_data();
     }
     else
     {
-        echo $_SESSION["user"];
+        //echo $_SESSION["user"];
         //include 'StudentLogin.php';
         require'interface/loginpage.php';
-        get_table_data("student");
+        //add_data();
+        //get_table_data("student");
     }
 
     ?>

@@ -6,5 +6,4 @@ session_start();
 pg_connect_to_database();
 //echo "connected to postgres database" ;
 
-
 ?>
