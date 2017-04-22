@@ -7,12 +7,12 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
-
+<?php
+    require "nav_bar_update.html"
+?>
 </head>
 <body>
-  <?php
-    require "navigationbar.html"
-   ?>
+  
    <div id="menu">
      <div class="jumbotron col-lg-4 col-md-4 col-sm-12 col-xs-12" id="industryPartners">
        <h2>Industry Partners</h2>
