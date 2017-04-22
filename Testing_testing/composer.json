@@ -1,0 +1,7 @@
+{
+	"require":
+{
+	"prggmr/xpspl": "v4.0.1",
+	"zend/gdata":"1.12.1"
+}
+}

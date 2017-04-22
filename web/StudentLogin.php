@@ -18,15 +18,15 @@
               <h2 class="header-text">Login</h2>
               <hr>
 
-              <!-- form for registering a new user-->
+              <!-- form for registering a new user
               <form  method="post" action="" enctype="multipart/form-data" id="login_form">
-                <!--insert a username-->
+                <!--insert a username
                 <div class="form-group">
                   <label for="Name">Username:</label>
-                  <input type="text" class="form-control" name="username" id="login_username" required>
+                  <input type="text" class="form-control" name="username" id="logikn_username" required>
                 </div>
 
-                <!-- insert a paswword-->
+                <!-- insert a paswword
                 <div class="form-group">
                   <label for="password">Password:</label>
                   <input type="password" class="form-control" name="password" id="login_password" required>
@@ -34,7 +34,7 @@
                   <label class="errorm" id="login_error">invlaid username/password</label><br>
                 <button type="submit" class="btn btn-default">Submit</button>
                 <a href ="register.php"  class="btn btn-default">Register</a>
-              </form>
+              </form>-->
             </div>
         </div></body>
 </html>
