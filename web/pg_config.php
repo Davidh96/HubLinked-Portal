@@ -7,8 +7,8 @@ pg_connect_to_database();
 //echo "connected to postgres database" ;
 
 //create tables
-create_tables();
+//eate_tables();
 //create dummy data
-createData();
+//eateData();
 
 ?>
