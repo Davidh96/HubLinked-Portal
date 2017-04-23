@@ -226,14 +226,13 @@ function create_tables(){
      FOREIGN KEY (op_id) REFERENCES opportunity(op_id),
      FOREIGN KEY (stu_no) REFERENCES student(stu_no));
   EOF;
-
+//test
   $ret = pg_query($db, $sql);
   if(!$ret){
      echo pg_last_error($db);
   } else {
      echo " application Table created successfully\n";
   }
- }
 }
 
 //creates dummy data
