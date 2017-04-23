@@ -9,24 +9,22 @@
 </html>
     <?php
     //session_start();
-//    require 'init.php';
+    require 'init.php';
     require 'functions.php';
-
+    echo $_SESSION["user"];
+    echo $_SESSION["usertype"];
     if(logged_in()){
-        //echo"asd";
-        //echo $_SESSION["user"];
-        require 'Homepage.php';  //?
-        get_col_names("location");
-        //get_table_data("student");
-        //add_data();
+        
+        if($_SESSION["usertype"] == "STUDENT"){
+        require 'Homepage.php';
+        }
+        else{
+         require 'interface/client_home.php';   
+        }
     }
     else
     {
-        //echo $_SESSION["user"];
-        //include 'StudentLogin.php';
         require'interface/loginpage.php';
-        //add_data();
-        //get_table_data("student");
     }
 
     ?>

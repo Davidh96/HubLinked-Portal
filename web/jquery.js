@@ -1,6 +1,6 @@
 //login user
 $(document).ready(function(){
-    //alert("ad");
+    //alert("aede");
     
    // when the submit button is clicked 
    $("#login_form").submit(function(e){
@@ -24,6 +24,13 @@ $(document).ready(function(){
         }
         })
    });
+    
+      $("#infochange").click(function(){
+       
+          alert("an email with the link to change has been sent");
+          
+    });
+  
     
 });
 

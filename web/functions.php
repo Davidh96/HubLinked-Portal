@@ -66,16 +66,14 @@ function get_company_details($cid){
     return result;
 }
 
-function get_student_details($sid){
- //   include ("config.php");
-    mysqli_select_db($conn, $db);
-    $stmt = $conn->prepare("SELECT * from stu_name where stu_no = ?");
-    $stmt->bind_param("s",$sid);
+function get_student_details($semail){
+    $conn = pg_connect_to_database();
+    $stmt = $conn->prepare("SELECT * from student where stu_email = :se");
+    $stmt->bindParam(':se',$semail);
     $stmt->execute();
-    $stmt->bind_result($stu_email,$stu_inst,$stu_name,$stu_no,$stu_pw);
     $result = $stmt->fetch();
-    //echo $cname;
-    return result;
+        
+    return $result;
 }
 
 function get_college_details($cid){
@@ -91,26 +89,47 @@ function get_college_details($cid){
 }
 
 function pg_CheckUserExists($username,$pass){
-
-    //include 'pg_config.php';
     try{
+    //checking entered email with student email and password    
     $myPDO = pg_connect_to_database();
-    $sql = $myPDO->query ("SELECT * FROM student");
-        echo "query done";
-        if($sql->fetch())
-        {
-    while($row = $sql->fetch()){
-        echo "number : " ,$row["stu_no"],"  name: ",$row["stuname"] ,"e: ",$row["stu_email"]    ,"p: ",$row["stu_pw"]  ,"</br>";
+    $stmt = $myPDO->prepare("SELECT * from student where stu_email = :e AND stu_pw = :p");
+    $stmtc = $myPDO->prepare("SELECT * FROM company WHERE comp_email = :e AND comp_pw = :p");
+    $stmti = $myPDO->prepare("SELECT * FROM institution WHERE inst_email = :e AND inst_pw = :p");    
+    $stmt->bindParam(':e',$username);
+    $stmti->bindParam(':e',$username);
+    $stmtc->bindParam(':e',$username);
+    $stmt->bindParam(':p',$pass);
+    $stmti->bindParam(':p',$pass);
+    $stmtc->bindParam(':p',$pass);
+    $stmt->execute();
+    $stmtc->execute();
+    $stmti->execute();
+    
+    if($stmti->rowCount() > 0){
+        //setting session user and type
+        $_SESSION["user"] = "$username";
+        $_SESSION["usertype"] = "INST";
+        return 0;
     }
-        }
-        else{
-            echo " its empty";
-        }
+    
+    else if($stmt->rowCount() > 0){
+        //setting session user and type
+        $_SESSION["user"] = "$username";
+        $_SESSION["usertype"] = "STUDENT";
+        return 0;
+    }
+     
+    else if($stmtc->rowCount() > 0){
+        //setting session user and type
+        $_SESSION["user"] = "$username";
+        $_SESSION["usertype"] = "COMPANY";
+        return 0;
+    }
+        else{   //returning to show wrong email/password
+        return 1;
+    }
     }  catch(PDOException $e){
-    echo $e->getMessage();
-}
-    $_SESSION["user"] = "temp";
-    return 0;
+    echo $e->getMessage();}
 }
 
 function get_table_data($table){
@@ -305,6 +324,14 @@ function add_dummy_data(){
     add_data_app(2,1,"D14122804","Pending");
     add_data_app(3,1,"D14122804","Denied");
     get_table_data("application");
+    
+}
+
+function jobsearch(){
+    
+}
+
+function collegesearch(){
     
 }
 ?>

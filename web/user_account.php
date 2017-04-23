@@ -6,6 +6,8 @@
 	  <script src="	"></script>
 	  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	   <link rel="stylesheet" href="style.css">
+        <script src="jquery-3.1.1.min.js"></script>
+        <script src="jquery.js"></script>
 	</head>
 <body>
 <?php
@@ -14,29 +16,33 @@
 
   <div class="container">
 <div class="jumbotron">
-
-<form method="post" action="" enctype="multipart/form-data" id = "layout">
-	
-	<h2><span class="glyphicon glyphicon-user"></span> Account Details</h2>
+    
+	<?php 
+    require 'functions.php';
+    
+    $email = $_SESSION["user"];
+    $result = get_student_details($email);
+    
+    echo"
+	<h2><span class='glyphicon glyphicon-user'></span> Account Details</h2>
 	<p>
 	<br>
-	
-	Edit college name:  <input type = "text" placeholder="College name" >  
-	
-	<p>
-	Edit college email:  <input type = "text" placeholder="College name" >  
-	
-	<p>
-	Enter New Password:  <input type = "text" placeholder="College name" >  
+    name : $result[1]
+    <p>
+	student no : $result[0]
+    <p>
+    email: $result[3]   
 	
 	<p>
-	To save type in password:  <input type = "text" placeholder="College name" >  
+	college: $result[2]   
+	
 	<p>
-	<button type="submit" class="btn btn-default"> Save Details</button>
-	<p>
+	<a id='infochange'>Request Info Change</a>
+	"?>
 	
 	
-</form>
+	
+
 </div>
 </div>
 

@@ -7,6 +7,8 @@
 	  <script src="	"></script>		
 	  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	   <link rel="stylesheet" href="style.css">
+        <script src="../jquery-3.1.1.min.js"></script>
+        <script src="../jquery.js"></script>
 	</head>
 <body>
 <?php
@@ -15,12 +17,11 @@
 <div class="search_bar">
 <nav class="navbar navbar-default" id="job_search_bar" >
   <div class="container-fluid" >
-      <form class="navbar-form navbar-right">
-          <input type="text" class="form-control " placeholder="Search by skill/jobtitle">
-          <input type="text" class="form-control" placeholder="Search by Location">
-          <input type="text" class="form-control" placeholder="Search by Company">
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
-          
+      <form class="navbar-form navbar-right" id="job_search">
+          <input type="text" class="form-control " placeholder="Search by Field" name="job_field" id="job_field">
+          <input type="text" class="form-control" placeholder="Search by Location" name="job_location" id="job_location">
+          <input type="text" class="form-control" placeholder="Search by Company" name="job_company" id="job_company">
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>  
       </form>
     </div>
 </nav>
