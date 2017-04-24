@@ -20,19 +20,26 @@ die();
 }
     return $myPDO;
 }
+//making global PDO connected to the database
+global $myPDO;
+$myPDO = pg_connect_to_database();
 
-function pg_check_table($thing, $table, $data){
-    $conn = pg_connect(changeURL());
-    $result = pg_query($pg_conn, "SELECT $thing FROM  $table WHERE $thing = $data");
-
+function get_student_details($semail){
+    //$conn = pg_connect_to_database();
+    global $myPDO;
+    $stmt = $myPDO->prepare("SELECT * from student where stu_email = :se");
+    $stmt->bindParam(':se',$semail);
+    $stmt->execute();
+    $result = $stmt->fetch();
+        
     return $result;
 }
 
 function pg_check_for_tables(){
-    //echo "1";
-  $db = pg_connect_to_database();
+    global $myPDO;
+  //$db = pg_connect_to_database();
     //echo "2";
-    $result = $db->query("SELECT
+    $result = $myPDO->query("SELECT
     table_schema || '.' || table_name
 FROM
     information_schema.tables
@@ -54,44 +61,11 @@ AND
     }
 }
 
-function get_company_details($cid){
-   // include ("config.php");
-    mysqli_select_db($conn, $db);
-    $stmt = $conn->prepare("SELECT * from company where comp_id = ?");
-    $stmt->bind_param("s",$cid);
-    $stmt->execute();
-    $stmt->bind_result($comp_email,$comp_id,$comp_name, $comp_pw,$comp_ind );
-    $result = $stmt->fetch();
-    //echo $cname;
-    return result;
-}
-
-function get_student_details($semail){
-    $conn = pg_connect_to_database();
-    $stmt = $conn->prepare("SELECT * from student where stu_email = :se");
-    $stmt->bindParam(':se',$semail);
-    $stmt->execute();
-    $result = $stmt->fetch();
-        
-    return $result;
-}
-
-function get_college_details($cid){
-//    include ("config.php");
-    mysqli_select_db($conn, $db);
-    $stmt = $conn->prepare("SELECT * from institution where inst_id = ?");
-    $stmt->bind_param("s",$cid);
-    $stmt->execute();
-    $stmt->bind_result($inst_email,$inst_id,$inst_name, $inst_pw,$ist_loc );
-    $result = $stmt->fetch();
-    //echo $cname;
-    return result;
-}
-
 function pg_CheckUserExists($username,$pass){
     try{
     //checking entered email with student email and password    
-    $myPDO = pg_connect_to_database();
+    global $myPDO;
+    //$myPDO = pg_connect_to_database();
     $stmt = $myPDO->prepare("SELECT * from student where stu_email = :e AND stu_pw = :p");
     $stmtc = $myPDO->prepare("SELECT * FROM company WHERE comp_email = :e AND comp_pw = :p");
     $stmti = $myPDO->prepare("SELECT * FROM institution WHERE inst_email = :e AND inst_pw = :p");    
@@ -134,12 +108,13 @@ function pg_CheckUserExists($username,$pass){
 
 function get_table_data($table){
     try{
-    $myPDO = pg_connect_to_database();
+    global $myPDO;
+    //$myPDO = pg_connect_to_database();
     $sql = $myPDO->query("SELECT * FROM $table");
         //echo "query done";
             echo "data: ";
             while( $row = $sql->fetch()){
-                echo " ", $row[1], " ,";
+                echo " ", $row[0], " ,";
             }
             echo "</br>";
         //else{
@@ -152,10 +127,10 @@ function get_table_data($table){
 }
 
 function get_col_names($table){
-    $db = pg_connect_to_database();
-    echo " select column_name from information_schema.columns where
-table_name='$table'';";
-    $result = $db->query("select column_name from information_schema.columns where
+    global $myPDO;
+    //$db = pg_connect_to_database();
+    //echo " select column_name from information_schema.columns where table_name='$table'';";
+    $result = $myPDO->query("select column_name from information_schema.columns where
 table_name='$table';");
     try{
         while ($row = $result->fetch()) {
@@ -222,17 +197,27 @@ function add_data_student($sno,$sna,$si,$se,$sp){
 }
 
 function add_data_opp($oi,$ai,$li,$ot,$od,$oty){
-    $myPDO = pg_connect_to_database();
-    $myPDO->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+    global $myPDO;
+    //$myPDO = pg_connect_to_database();
+    //$myPDO->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+    echo "  ",$oi," . ";
+    echo $ai, " . ";
+    echo $li, " . ";
+    echo $ot, " . ";
+    echo $od, " . ";
+    echo $oty, " . ";
     $stmt = $myPDO->prepare("INSERT INTO opportunity(op_id, author_id, loc_id,op_title,op_desc,op_type) VALUES (:oi,:ai,:li,:ot,:od,:oty)");
     //$stmt->bindParam(':t',$tab);
+    //echo "4.2";
     $stmt->bindParam(':oi',$oi);
     $stmt->bindParam(':ai',$ai);
     $stmt->bindParam(':li',$li);
     $stmt->bindParam(':ot',$ot);
     $stmt->bindParam(':od',$od);
     $stmt->bindParam(':oty',$oty);
+    //echo "4.3";
     $stmt->execute();
+    //echo "4.4"; 
     echo $stmt->errorInfo(), "</br>";
 }
 
@@ -334,4 +319,46 @@ function jobsearch(){
 function collegesearch(){
     
 }
+
+function add_opportunity($t, $email, $type, $desc, $title, $loc){
+    
+    global $myPDO;
+    //getting the id of the college/company 
+    //echo "1";
+    if($t){
+        //echo "1.1";
+        $sql = $myPDO->query("SELECT * FROM institution WHERE inst_email='$email'");
+        //echo " $email";
+        while( $row = $sql->fetch()){    
+            $id = $row[0];
+            }
+    }
+    else{
+        $sql = $myPDO->query("SELECT * FROM company WHERE comp_email = '$email'");
+        while( $row = $sql->fetch()){
+                $id = $row[0];
+        }
+        
+    }
+    //echo "2";
+    //getting location id from location name
+    $sql = $myPDO->query("SELECT loc_id FROM location WHERE loc_name = '$loc'");
+        while( $row = $sql->fetch()){
+                $loc_id = $row[0];
+        }
+    //echo "3";
+    //checking lsat opportunity id
+    $sql = $myPDO->query("SELECT * FROM opportunity");
+        while( $row = $sql->fetch()){
+                $opp_id = $row[0];
+                echo $opp_id;
+        }
+    //echo "4  ";
+    $opp_id+=1;
+    echo $opp_id;
+    
+    add_data_opp($opp_id,$id,$loc_id,$title,$desc,$type);
+    //echo "5";
+    //return true;
+}   
 ?>

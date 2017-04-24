@@ -133,4 +133,9 @@
 	font-size:15px;
 }
 
+.error{
+    float: left;
+    display: none;
+}
+
 

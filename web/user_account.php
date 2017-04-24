@@ -18,6 +18,7 @@
 <div class="jumbotron">
     
 	<?php 
+    require 'init.php';
     require 'functions.php';
     
     $email = $_SESSION["user"];

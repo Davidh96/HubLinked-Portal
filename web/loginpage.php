@@ -1,10 +1,11 @@
 <html>
 	<head>
+        <link rel="stylesheet" href="style.css" type="text/css">
 	  <meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
 	  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	   <link rel="stylesheet" href="style.css">
+	   
 	</head>
 <body>
 
@@ -23,6 +24,7 @@
          <input type = "text" placeholder ="Email"class="form-control" name="email" id="login_email"><t> </t>
         <input type = "password" placeholder= "Password" class="form-control" name="password" id="login_password">
 		<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Login</button>
+         <div id="login_error" class="error" style="display:none"><p class="error">error message</p></div>
          </form>
     </div>
 </nav>

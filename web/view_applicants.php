@@ -41,12 +41,12 @@ require "navbar.php";
 							<h4>#Title1</h4>
 						</div>
 					</div>
-				</div></br>
+				</div><br>
 				
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6">
-							<a class="name">Charles Acquah</a></br>
+							<a class="name">Charles Acquah</a><br>
 							<a>Dublin Institute of Technology</a> <br/>
 						</div>
 						<div class="col-sm-6">
@@ -59,7 +59,7 @@ require "navbar.php";
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6">
-							<a class="name">David Hunt</a></br>
+							<a class="name">David Hunt</a><br>
 							<a>Beihang University</a> <br/>
 						</div>
 						<div class="col-sm-6">
