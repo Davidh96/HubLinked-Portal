@@ -31,7 +31,21 @@ $(document).ready(function(){
           alert("an email with the link to change has been sent");
           
     });
-  
+    
+    $("#c_search").submit(function(){
+       
+        //var data = $("#c_search").serialize();
+        //var data = $("#c_search :input[value!='']").serialize();
+        var data = $("#c_search :input")
+    .filter(function(index, element) {
+        return $(element).val() != "";
+    })
+    .serialize();
+        alert(data);
+        //alert("d");
+        
+    });
+
     
 });
 

@@ -12,7 +12,7 @@
 require 'init.php';
 require "navbar.php";
 require "functions.php";
-    if ($_SESSION["usertype"] = "INST")
+    if ($_SESSION["usertype"] == "INST")
     {
         $mtype = "exchange";
     }

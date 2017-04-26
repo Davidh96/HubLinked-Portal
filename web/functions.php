@@ -112,15 +112,16 @@ function get_table_data($table){
     //$myPDO = pg_connect_to_database();
     $sql = $myPDO->query("SELECT * FROM $table");
         //echo "query done";
-            echo "data: ";
-            while( $row = $sql->fetch()){
-                echo " ", $row[0], " ,";
+           // echo "data: ";
+        while( $row = $sql->fetch()){
+                echo " ", $row[1], " ,";
             }
-            echo "</br>";
+        echo "</br>";
         //else{
-        //    echo " its empty";
+          //  echo " its empty";
         //}
         //echo "a";
+        return $sql;
     }  catch(PDOException $e){
     echo $e->getMessage();
 }
@@ -318,6 +319,16 @@ function jobsearch(){
 
 function collegesearch(){
     
+}
+
+function get_opps(){
+    global $myPDO;
+    $email = $_SESSION["user"];
+    if($_SESSION["usertype"] == "COMPANY"){        
+    $sql = $myPDO->query("SELECT op_title FROM opportunity JOIN company ON author_id = comp_id WHERE comp_email = '$email'");
+    return $sql;
+    
+    }
 }
 
 function add_opportunity($t, $email, $type, $desc, $title, $loc){

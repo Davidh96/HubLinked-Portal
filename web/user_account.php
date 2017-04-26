@@ -11,7 +11,13 @@
 	</head>
 <body>
 <?php
+    require'init.php';
+    if($_SESSION["usertype"] == "STUDENT"){
     require 'nav_bar_update.html';
+    }
+    else{
+        require 'navbar.php';
+    }
 ?>
 
   <div class="container">
