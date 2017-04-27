@@ -22,46 +22,49 @@
             if(isset($_GET["location"]) && $_GET["location"]!=""){
                 //echo "all";
                 $loc = $_GET["location"];
-                $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name LIKE '%$collge%' AND loc_name LIKE '%$loc%' AND op_type LIKE '%$course%'");
+               $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name LIKE '%$collge%' AND loc_name LIKE '%$loc%' AND op_type LIKE '%$course%'");
                 echo "ad";
             }else{
-                 $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id WHERE inst_name LIKE '%$collge%' AND op_type LIKE '%$course%'");
+                 $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id WHERE inst_name LIKE '%$collge%' AND op_type LIKE '%$course%'");
                 echo "course + colllege";
             }
         }
         
         else if(isset($_GET["location"]) && $_GET["location"]!=""){
-             $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name LIKE '%$collge%' AND loc_name LIKE '%$loc%'");
+             $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name LIKE '%$collge%' AND loc_name LIKE '%$loc%'");
             echo " college + location";
         }
         else {
-            $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name LIKE '%$collge%'");
+            $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name LIKE '%$collge%'");
             echo "college";
             
              }
     }
     else if(isset($_GET["course"]) && $_GET["course"]!=""){
         
-        if(isset($_GET["location"]) && $_GET["location"]!=""){$myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id WHERE op_type LIKE '%$course%'");
+        if(isset($_GET["location"]) && $_GET["location"]!=""){
+            $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id WHERE op_type LIKE '%$course%'");
             echo "course + location";
         }
         else{
             
-            $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE op_type LIKE '%$course%'");
+            $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE op_type LIKE '%$course%'");
             echo "course";
         }
         
     }
     else if(isset($_GET["location"]) && $_GET["location"]!=""){
-        $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE loc_name LIKE '%$loc%'");
+        $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE loc_name LIKE '%$loc%'");
                 echo "ad";
         echo "location";
     }
     else{
-        $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id)");
+        $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id)");
                 echo "ad";
         echo "none";
     }
+    
+   
     
     require 'nav_bar_update.html';
     echo '
@@ -107,28 +110,35 @@
 <form method="post" action="" enctype="multipart/form-data" id = "layout">
 	
 	
-<div >';
-   
-    ?>
+<div >
 
     <table width="200" class="table table-condensed">
-		<tr>
-			<td> Logo </td>
-			<td> Name of college + course </td>
+		';
+    
+     while ($row = $stmt->fetch() ){
+        $title = $row[0];
+        $inst = $row[1];
+        $location = $row[2];
+    
+         echo "
+         <tr>
+            <td>$title</td>
+			<td> $inst , $location </td>
 			<td> Click here for informaton </td>
 			<td>Time </td>
 		</tr>
-		<tr>
-			<td> Logo </td>
-			<td> Name of college + course  </td>
-			<td> Click here for informaton </td>
-			<td> Time </td>
-		</tr>
+        ";
+     }
+    echo '
 	</table>
 </div>
 </form>
 </div>
     </div>
+
+';
+   
+    ?>
 
 </body>
 </html>

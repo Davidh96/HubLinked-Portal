@@ -13,14 +13,64 @@
 <body>
 <?php
     require 'nav_bar_update.html';
-?>
+    require 'functions.php';
+    if(isset($_GET["company"]) && $_GET["company"]!=""){
+        global $myPDO;
+        $company = $_GET["company"];
+        if( isset($_GET["field"])  && $_GET["field"]!=""){
+            $field = $_GET["field"];
+            if(isset($_GET["location"]) && $_GET["location"]!=""){
+                //echo "all";
+                $loc = $_GET["location"];
+               $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE comp_name LIKE '%$company%' AND loc_name LIKE '%$loc%' AND op_type LIKE '%$field%'");
+                echo "ad";
+            }else{
+                 $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id WHERE comp_name LIKE '%$company%' AND op_type LIKE '%$field%'");
+                echo "field + company";
+            }
+        }
+        
+        else if(isset($_GET["location"]) && $_GET["location"]!=""){
+             $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE comp_name LIKE '%$company%' AND loc_name LIKE '%$loc%'");
+            echo " company + location";
+        }
+        else {
+            $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE comp_name LIKE '%$company%'");
+            echo "company";
+            
+             }
+    }
+    else if(isset($_GET[""]) && $_GET["field"]!=""){
+        
+        if(isset($_GET["location"]) && $_GET["location"]!=""){
+            $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id WHERE op_type LIKE '%$field%'");
+            echo "field + location";
+        }
+        else{
+            
+            $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE op_type LIKE '%$field%'");
+            echo "field";
+        }
+        
+    }
+    else if(isset($_GET["location"]) && $_GET["location"]!=""){
+        $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE loc_name LIKE '%$loc%'");
+                echo "ad";
+        echo "location";
+    }
+    else{
+        $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id)");
+                echo "ad";
+        echo "none";
+    }
+echo '
 <div class="search_bar">
 <nav class="navbar navbar-default" id="job_search_bar" >
   <div class="container-fluid" >
       <form class="navbar-form navbar-right" id="job_search">
-          <input type="text" class="form-control " placeholder="Search by Field" name="job_field" id="job_field">
-          <input type="text" class="form-control" placeholder="Search by Location" name="job_location" id="job_location">
-          <input type="text" class="form-control" placeholder="Search by Company" name="job_company" id="job_company">
+          <input type="text" class="form-control " placeholder="Search by Field" name="field" id="job_field">
+          <input type="text" class="form-control" placeholder="Search by Location" name="location" id="job_location">
+          <input type="text" class="form-control" placeholder="Search by Company" name="company" id="job_company">
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>  
       </form>
     </div>
@@ -58,23 +108,27 @@
 	
 <div >
 
-    <table width="200" class="table table-condensed">
-		<tr>
-			<td> Logo </td>
-			<td> Name + posted a new job </td>
-			<td> Click here for informaton </td>
-			<td>Time </td>
-		</tr>
-		<tr>
-			<td> Logo </td>
-			<td> Name + posted a new job </td>
-			<td> Click here for informaton </td>
-			<td> Time </td>
-		</tr>
+    <table width="200" class="table table-condensed"> 
+    <tr>
+			<td> company</td>
+            <td>title</td>
+            <td>location</td>
+			<td> Click here for informaton </td>		
+		</tr>';
+		while ($row = $stmt->fetch()){
+        echo "<tr>
+			<td> $row[1]</td>
+            <td>$row[0]</td>
+            <td>$row[2]</td>
+			<td> Click here for informaton </td>		
+		</tr>";
+            }
+echo '
 	</table>
 </div>
 </form>
 </div>
-</div>    
+</div>
+';?>
 </body>
 </html>
