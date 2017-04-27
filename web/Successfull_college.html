@@ -4,7 +4,7 @@
 	  <meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	  <script src="	"></script>
+	  <script src="	"></script>		
 	  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	   <link rel="stylesheet" href="style.css">
 	</head>
@@ -28,6 +28,7 @@
 		<li><a href="jobs.php"><span class="glyphicon glyphicon-lock"></span> Jobs</a></li>
 		<li><a href="colleges.php"><span class="glyphicon glyphicon-book"></span> Colleges</a></li>
 		<li><a href="user_account.php"><span class="glyphicon glyphicon-user"></span> Me</a></li>
+		<li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
       </ul>
     </div>
 </nav>
@@ -35,12 +36,11 @@
 
 <nav class="navbar navbar-default" id = "search_bar" >
   <div class="container-fluid" >
-
+	
 	 <form class="navbar-form navbar-left" >
-
+	 
         <div class="form-group" id = "Search_box">
-
-          <input type="text" class="form-control " placeholder="Search by Course code or keyword">
+          <input type="text" class="form-control" placeholder="Search by Skill, Company, Title">
         </div>
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
 	</form>
@@ -50,52 +50,17 @@
         </div>
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
       </form>
-
+	
 	</div>
+	
+	
 </nav>
 
+<div id = "applied"> You have sucessfully applied for this college, we will get in touch ASAP</div>
 
 
-
-<div id = "college_logo">
-	<img src = "dit-logo.png" style="width:100px;height:95px;" id = "dit-logo">
-</div>
-<div id = "course_name">
-	<p>Computer Science International Lecturer</p>
-	<div id = "college_name">
-		<p>Dublins Institute of Technology</p>
-
-	</div>
-
-</div>
-
-<button class = "btn-primary" id = "apply_button">Apply for job </button>
-
-<button class = "btn-primary"id = "subscribe_button">Subscribe </button>
-
-
-<div id="skills">
-<hr>
-	<p>Skills Needed</p>
-	<ul>
-		<li>Skill 1</li>
-		<li>Skill 2</li>
-		<li>Skill 3</li>
-		<li>Skill 4</li>
-	</ul>
-	<div id="weDo">
-		<p>What we do</p>
-		<ul>
-			<li>We do 1</li>
-			<li>We do 2</li>
-			<li>We do 3</li>
-			<li>We do 4</li>
-		</ul>
-	</div>
-</div>
-
-
-
+<a href="college_search.html" id = "return_button">Return to College search</a>
+<a href="applied_colleges.php" id = "applied_button">View colleges you have already applied for</a>
 
 
 

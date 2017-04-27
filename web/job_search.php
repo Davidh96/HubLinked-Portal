@@ -7,32 +7,26 @@
 	  <script src="	"></script>		
 	  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	   <link rel="stylesheet" href="style.css">
+        <script src="jquery-3.1.1.min.js"></script>
+        <script src="jquery.js"></script>
 	</head>
 <body>
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="home.php"><img src = "logo.png" style="width:70px;height:55px;" id = "logo"></a>
-    </div>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+<?php
+    require 'nav_bar_update.html';
+?>
+<div class="search_bar">
+<nav class="navbar navbar-default" id="job_search_bar" >
+  <div class="container-fluid" >
+      <form class="navbar-form navbar-right" id="job_search">
+          <input type="text" class="form-control " placeholder="Search by Field" name="job_field" id="job_field">
+          <input type="text" class="form-control" placeholder="Search by Location" name="job_location" id="job_location">
+          <input type="text" class="form-control" placeholder="Search by Company" name="job_company" id="job_company">
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>  
       </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="home.php"><span class="glyphicon glyphicon-home"></span> Home</a></a></li>
-        <li><a href="notifications.php"><span class="glyphicon glyphicon-bell"></span> Notifications</a></li>
-		<li><a href="messages.php"><span class="glyphicon glyphicon-envelope"></span> Messages</a></li>
-		<li><a href="jobs.php"><span class="glyphicon glyphicon-lock"></span> Jobs</a></li>
-		<li><a href="colleges.php"><span class="glyphicon glyphicon-book"></span> Colleges</a></li>
-		<li><a href="user_account.php"><span class="glyphicon glyphicon-user"></span> Me</a></li>
-      </ul>
     </div>
 </nav>
-
-
+</div>
+<!--
 <nav class="navbar navbar-default" id = "search_bar" >
   <div class="container-fluid" >
 	
@@ -52,7 +46,7 @@
 	
 	</div>
 </nav>
-
+-->
  <div class="container">
 <div class="jumbotron">
 <div id = "search_results"> X results found </div>
@@ -81,15 +75,6 @@
 </div>
 </form>
 </div>
-
-
-	 
-  
-
-
-
-
-
-
+</div>    
 </body>
 </html>
