@@ -13,7 +13,6 @@
     require 'functions.php';
     // echo $_SESSION["user"];
     // echo $_SESSION["usertype"];
-    echo "Fuck";
     //global $PDO;
     //$myPDO = pg_connect_to_database();
     //get_table_data("company");
