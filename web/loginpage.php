@@ -14,12 +14,6 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="home.php"><img class="logo-img" src="images/full_logo.png" style="width:125px;height:85px;margin-top:-30" id="full_logo"></a>
     </div>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
-      </form>
 
      <form class="navbar-form navbar-right" id="login_form">
         <input type = "text" placeholder ="Email"class="form-control" name="email" id="login_email"><t> </t>
