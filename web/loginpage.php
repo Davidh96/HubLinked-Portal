@@ -12,7 +12,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="home.php"><img class="logo-img" src="interface/full_logo.png" style="width:125px;height:85px;margin-top:-30" id="full_logo"></a>
+      <a class="navbar-brand" href="home.php"><img class="logo-img" src="images/full_logo.png" style="width:125px;height:85px;margin-top:-30" id="full_logo"></a>
     </div>
       <form class="navbar-form navbar-left">
         <div class="form-group">
