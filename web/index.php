@@ -11,18 +11,19 @@
     //session_start();
     require 'init.php';
     require 'functions.php';
-    echo $_SESSION["user"];
-    echo $_SESSION["usertype"];
+    // echo $_SESSION["user"];
+    // echo $_SESSION["usertype"];
+    echo "Fuck";
     //global $PDO;
     //$myPDO = pg_connect_to_database();
     //get_table_data("company");
     if(logged_in()){
-        
+
         if($_SESSION["usertype"] == "STUDENT"){
             require 'Homepage.php';
         }
         else{
-            require 'client_home.php';   
+            require 'client_home.php';
         }
     }
     else{
@@ -30,4 +31,3 @@
     }
 
     ?>
- 
