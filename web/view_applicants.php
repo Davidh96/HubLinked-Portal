@@ -3,7 +3,7 @@
     
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="applicants_style.css">
+	<link rel="stylesheet" type="text/css" href="clientPages.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -33,7 +33,7 @@ require "navbar.php";
 require 'functions.php';
     $result1 = get_opps();  
     
-echo "<div class='col-sm-2 sidenav'>
+echo "<div class='col-sm-2 sidenav' id='advLink'>
 	<h4>Opportunities</h4>
 	<ul class='nav nav-pills nav-stacked' id='opps'>";
       while( $row = $result1->fetch()){
