@@ -24,7 +24,7 @@ THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
     global $myPDO;
     $company = $_GET["company"];
     $loc = $_GET["location"];
-    $field = $_GET["field"];
+    $industry = $_GET["field"];
     
     if(isset($_GET["company"]) && $_GET["company"]!="") {
         //search by company
@@ -34,7 +34,7 @@ THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
     if(isset($_GET["field"])  && $_GET["field"]!="") {
         //search by opportunity field
         echo 'searching by field of industry';
-        $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id WHERE op_type LIKE '%$field%'");
+        $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id WHERE op_type LIKE '%$industry%'");
     }
     if(isset($_GET["location"]) && $_GET["location"]!="") {
         echo 'searching by job location';
