@@ -138,16 +138,12 @@
     display: none;
 }
 
+/*Logged in college*/
+
 #logged_in_details
 {
-	margin-left:0%;
-	float:left;
-	margin-right:83%;
-	padding-left:10px;
+	margin-left:10%;
 }
 
-#feed
-{
-	
-}
+
 
