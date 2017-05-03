@@ -26,7 +26,7 @@
 	margin-left: 200px;
 	
 } 
-/*index page */
+/*index page 
 .jumbotron
  {
 	
@@ -35,6 +35,8 @@
 	margin-top:30px;
 
 }
+*/
+
 #job_search_bar
 {
 	margin-top: -20px;
@@ -137,12 +139,11 @@
     float: left;
     display: none;
 }
+/*
+This seems to mess up the nav bar and everything
 
-<<<<<<< HEAD
-
-=======
 body{padding:15px}
->>>>>>> 89fee35a878dd2bf1210d88170d9c2191d2162b2
+*/
 
 .notification-list, .n-user-list {
     list-style: outside none none;
@@ -170,16 +171,14 @@ body{padding:15px}
 .n-user-list li + li{margin-left:3px;}
 .n-user-list li a, .n-user-list li a:hober{text-decoration:none;}
 
-
 #logged_in_details
 {
-	margin-left:0%;
 	float:left;
-	margin-right:83%;
-	padding-left:10px;
 }
 
 #feed
 {
-	
+		float:right;
+		margin-right: 50px;
+		width:800px; 
 }
