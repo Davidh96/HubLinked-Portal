@@ -35,6 +35,29 @@ function get_student_details($semail){
     return $result;
 }
 
+function get_inst_details($semail){
+    //$conn = pg_connect_to_database();
+    global $myPDO;
+    $stmt = $myPDO->prepare("SELECT loc_name, inst_name,inst_id, inst_email from institution join location on location = loc_id
+    where inst_email = :se");
+    $stmt->bindParam(':se',$semail);
+    $stmt->execute();
+    $result = $stmt->fetch();
+
+    return $result;
+}
+
+function get_company_details($semail){
+    //$conn = pg_connect_to_database();
+    global $myPDO;
+    $stmt = $myPDO->prepare("SELECT industry,comp_name,comp_id,comp_email from company where comp_email = :se");
+    $stmt->bindParam(':se',$semail);
+    $stmt->execute();
+    $result = $stmt->fetch();
+
+    return $result;
+}
+
 function pg_check_for_tables(){
     global $myPDO;
   //$db = pg_connect_to_database();
@@ -335,7 +358,6 @@ function get_opps(){
     if($_SESSION["usertype"] == "COMPANY"){
     $sql = $myPDO->query("SELECT op_title FROM opportunity JOIN company ON author_id = comp_id WHERE comp_email = '$email'");
     return $sql;
-
     }
 }
 

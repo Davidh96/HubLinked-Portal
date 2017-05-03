@@ -23,24 +23,37 @@
     require 'functions.php';
 
     $email = $_SESSION["user"];
-    $result = get_student_details($email);
-
+    if($_SESSION["usertype"] == "STUDENT"){
+        $result = get_student_details($email);
+        $two = "student no";
+    }
+    else if($_SESSION["usertype"] == "COMPANY"){
+        $result = get_company_details($email);
+        $two = "industry";
+    }
+    else{
+        $result = get_inst_details($email);
+        $two = "location";
+    }
     echo"
 	<h2><span class='glyphicon glyphicon-user'></span> Account Details</h2>
 	<p>
 	<br>
     name : $result[1]
     <p>
-	student no : $result[0]
+	$two : $result[0]
     <p>
-    email: $result[3]
-
-	<p>
+    email : $result[3]
+    <p>";
+	
+    if($_SESSION["usertype"] == "STUDENT"){
+    echo "
 	college: $result[2]
 
 	<p>
 	<a id='infochange'>Request Info Change</a>
-	"?>
+	";}
+    ?>
 
 
 

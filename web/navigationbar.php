@@ -21,10 +21,13 @@
 				if($_SESSION["usertype"] != "STUDENT"){
 					echo '<li><a href="view_opptnity.php"><span class="glyphicon glyphicon-bell"></span> Opportunities</a></li>';
 				}
-			?>
-	    <li><a href="notifications.php"><span class="glyphicon glyphicon-bell"></span> Notifications</a></li>
+            
+                if($_SESSION["usertype"] == "STUDENT"){
+	               echo '<li><a href="notifications.php"><span class="glyphicon glyphicon-bell">}</span> Notifications</a></li> 
 			<li><a href="job_search.php"><span class="glyphicon glyphicon-lock"></span> Jobs</a></li>
-			<li><a href="college_search.php"><span class="glyphicon glyphicon-book"></span> Colleges</a></li>
+			<li><a href="college_search.php"><span class="glyphicon glyphicon-book"></span> Colleges</a></li>'; 
+                }
+        ?>
 			<li><a href="user_account.php"><span class="glyphicon glyphicon-user"></span> Me</a></li>
 		<li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
     </ul>
