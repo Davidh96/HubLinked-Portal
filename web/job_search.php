@@ -18,66 +18,31 @@ THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
     require 'nav_bar_update.html';
     require 'functions.php';
 
-    //IF _ AND _ ARE NOT NULL THEN CHECK IF THE FIELD IS NULL
-    if(isset($_GET["company"]) && $_GET["company"]!=""){
-        global $myPDO;
-        $company = $_GET["company"];
-        //CHECKS IF THE FIELD IS NULL
-        if( isset($_GET["field"])  && $_GET["field"]!=""){
-            $field = $_GET["field"];
-            //IF THE LOCATION IS NOT NULL
-            if(isset($_GET["location"]) && $_GET["location"]!=""){
-                //RETURNS JOB OP WHERE COMPANY = ENTERED COMPANY FIELD, LOCATION = ENTERED LOCATION FIELS, OPPORTUNITY TYPE = SEARCHED FIELD
-                $loc = $_GET["location"];
-                $stmt = $myPDO->query("SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE comp_name LIKE '%$company%' AND loc_name LIKE '%$loc%' AND op_type LIKE '%$field%'");
-                echo "ad";
-            }else{
-                //IF LOCATION IS NULL THEN SEARCH FOR THE OP DETAILS WHERE THE COMPANY NAME IS LIKE USER ENTERED COMPANY AND THE OPPORTUNITY TYPE IS JUST LIKE THE SEARCHED FIELD
-                 $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id WHERE comp_name LIKE '%$company%' AND op_type LIKE '%$field%'");
-                echo "field + company";
-            }
-        } //end inner if
-        // end middle if
-        //IF LOCATION FIELD IS NOT NULL THEN SEARCH FOR OP DETAILS BASED ON COMPANY 
-        //USER ENTERED FIELD AND USER ENTERED LOCATION FIELD 
-        else if(isset($_GET["location"]) && $_GET["location"]!=""){
-             $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE comp_name LIKE '%$company%' AND loc_name LIKE '%$loc%'");
-            echo " company + location";
-        }
-        else {
-            //ELSE, SEARCH FOR OP WHERE COMPANY NAME LIKE DATA ENTERED
-            $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE comp_name LIKE '%$company%'");
-            echo "company";
-            }
+    /*
+    Search is formatted like this as each search field is individual when "submit" is clicked
+    */
+    global $myPDO;
+    $company = $_GET["company"];
+    $loc = $_GET["location"];
+    $field = $_GET["field"];
+    
+    if(isset($_GET["company"]) && $_GET["company"]!="") {
+        //search by company
+        echo 'searching by company';
+        $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE comp_name LIKE '%$company%'");
     }
-    //does field mean opportunity type?
-    //IF OP TYPE IS NOT NULL
-    else if(isset($_GET[""]) && $_GET["field"]!=""){
-        //IF LOCATION IS NOT NULL, SEARCH BASED ON OP TYPE
-        if(isset($_GET["location"]) && $_GET["location"]!=""){
-            $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id WHERE op_type LIKE '%$field%'");
-                //why are we outputting location?
-            echo "field + location";
-        }
-        else{
-            //ELSE SEARCH BASED ON FIELD
-            $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE op_type LIKE '%$field%'");
-            echo "field";
-        }
-        
+    if(isset($_GET["field"])  && $_GET["field"]!="") {
+        //search by opportunity field
+        echo 'searching by field of industry';
+        $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id WHERE op_type LIKE '%$field%'");
     }
-    //IF LOCATION NOT NULL
-    else if(isset($_GET["location"]) && $_GET["location"]!=""){
-        //search by location
+    if(isset($_GET["location"]) && $_GET["location"]!="") {
+        echo 'searching by job location';
         $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE loc_name LIKE '%$loc%'");
-                echo "ad";
-        echo "location";
     }
     else{
-        //else do nothing?
+        //else output all
         $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id)");
-                echo "ad";
-        echo "none";
     }
 
 //OUTPUTS SEARCH RESULTS
