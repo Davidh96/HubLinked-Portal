@@ -1,6 +1,6 @@
 <html>
 <head>
-
+    
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="clientPages.css">
@@ -12,11 +12,11 @@
 <body>
 <?php
 require 'init.php';
-require "navigationbar.php";
+require "navbar.php";
     echo $_SESSION["user"];
     echo $_SESSION["usertype"];
-
-
+    
+  
     ?>
 <div class="container">
 	<div class="well">
@@ -29,10 +29,10 @@ require "navigationbar.php";
 </div>
 <div class='container'>
 	<div class='row'>
-<?php
+<?php    
 require 'functions.php';
-    $result1 = get_opps();
-
+    $result1 = get_opps();  
+    
 echo "<div class='col-sm-2 sidenav' id='advLink'>
 	<h4>Opportunities</h4>
 	<ul class='nav nav-pills nav-stacked' id='opps'>";
@@ -41,11 +41,11 @@ echo "<div class='col-sm-2 sidenav' id='advLink'>
       };
                   //<li class='active'><a >#Title1</a></li>
 		//#Title2
-
+	
           echo "</ul>
-
+	
 		</div>
-
+		
 	";?>
 		<div class="col-sm-10 list" id="c">
 				<div class='container-fluid'>
@@ -55,11 +55,11 @@ echo "<div class='col-sm-2 sidenav' id='advLink'>
 						</div>
 					</div>
 				</div><br>
-
+                
                 <div id= try></div>
-
+				
 			<!--<div class='container'><div class='row'><div class='col-sm-6'><a class='name'>Charles Acquah</a><br><a>Dublin Institute of Technology</a> <br/></div><div class='col-sm-6'><button class='btn btn-primary'>Accept</button><button class='btn btn-primary'>Decline</button</div></div></div><br>
-
+				
 				<div class='container'>
 					<div class='row'>
 						<div class='col-sm-6'>
@@ -68,23 +68,23 @@ echo "<div class='col-sm-2 sidenav' id='advLink'>
 						</div>
 						<div class='col-sm-6'>
 							<a href='' class='btn btn-primary' role='button'>Accept</a>
-							<a href='' class='btn btn-primary' role='button'>Decline</a>
+							<a href='' class='btn btn-primary' role='button'>Decline</a> 
 						</div>
 					</div//>
 
-				</div>	-->
+				</div>	-->		
 			</div>
 	</div>
 </div>
 
 <script>
 $(document).ready(function(){
-
+ 
     $("#opps li").click(function(){//on('click','li',function(){
         //alert($(this).text());
         var title = $(this).text();
         $("#title").text(title);
-
+        
         $.ajax({
             url : "get_applicants.php",
             type: 'GET',
@@ -97,9 +97,9 @@ $(document).ready(function(){
                 $("#c").append(result);
             }
         })
-
+        
     });
-
+    
 });
 </script>
 </body>

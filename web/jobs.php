@@ -8,7 +8,7 @@
 
   <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
 <?php
-    require "navigationbar.html"
+    require "navigationbar.php"
 ?>
 </head>
 </html>

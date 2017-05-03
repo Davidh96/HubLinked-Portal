@@ -5,15 +5,10 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<?php
+    require "navigationbar.html"
+?>
 </head>
-<body>
-  <?php
-    require "navigationbar.php"
-   ?>
-  <div class = "Jumbotron">
-            <div  class="container">
-              <h2 class="header-text">Account Page</h2>
-              <hr>
-            </div>
-        </div></body>
 </html>

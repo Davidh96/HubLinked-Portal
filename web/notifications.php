@@ -9,7 +9,7 @@
   <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
   <link href="style.css" rel="stylesheet" type="text/css"/>
 <?php
-    require "nav_bar_update.html"
+    require "navigationbar.php"
 ?>
 	<div class="page-header">
     <h4>Notifications</h4>

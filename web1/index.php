@@ -17,7 +17,13 @@
     //$myPDO = pg_connect_to_database();
     //get_table_data("company");
     if(logged_in()){
-        require 'Homepage.php';
+
+        if($_SESSION["usertype"] == "STUDENT"){
+            require 'Homepage.php';
+        }
+        else{
+            require 'client_home.php';
+        }
     }
     else{
         require'loginpage.php';

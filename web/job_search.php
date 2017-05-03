@@ -1,4 +1,4 @@
-<!-- 
+<!--
 THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
 -->
 <!DOCTYPE html>
@@ -7,7 +7,7 @@ THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src=" "></script>     
+      <script src=" "></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
        <link rel="stylesheet" href="style.css">
         <script src="jquery-3.1.1.min.js"></script>
@@ -15,7 +15,7 @@ THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
     </head>
 <body>
 <?php
-    require 'nav_bar_update.html';
+    require 'navigationbar.php';
     require 'functions.php';
 
     /*
@@ -25,7 +25,7 @@ THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
     $company = $_GET["company"];
     $loc = $_GET["location"];
     $industry = $_GET["field"];
-    
+
     if(isset($_GET["company"]) && $_GET["company"]!="") {
         //search by company
         echo 'searching by company';
@@ -54,7 +54,7 @@ echo '
           <input type="text" class="form-control " placeholder="Search by Field" name="field" id="job_field">
           <input type="text" class="form-control" placeholder="Search by Location" name="location" id="job_location">
           <input type="text" class="form-control" placeholder="Search by Company" name="company" id="job_company">
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>  
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
       </form>
     </div>
 </nav>
@@ -62,9 +62,9 @@ echo '
 <!--
 <nav class="navbar navbar-default" id = "search_bar" >
   <div class="container-fluid" >
-    
+
      <form class="navbar-form navbar-left" >
-     
+
         <div class="form-group" id = "Search_box">
           <input type="text" class="form-control" placeholder="Search by Skill, Company, Title">
         </div>
@@ -76,7 +76,7 @@ echo '
         </div>
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
       </form>
-    
+
     </div>
 </nav>
 -->
@@ -87,23 +87,23 @@ echo '
 
 
 <form method="post" action="" enctype="multipart/form-data" id = "layout">
-    
-    
+
+
 <div >
 
-    <table width="200" class="table table-condensed"> 
+    <table width="200" class="table table-condensed">
     <tr>
             <td> company</td>
             <td>title</td>
             <td>location</td>
-            <td> Click here for informaton </td>        
+            <td> Click here for informaton </td>
         </tr>';
         while ($row = $stmt->fetch()){
         echo "<tr>
             <td> $row[1]</td>
             <td>$row[0]</td>
             <td>$row[2]</td>
-            <td> Click here for informaton </td>        
+            <td> Click here for informaton </td>
         </tr>";
             }
 echo '

@@ -10,7 +10,7 @@
 
 <body>
 <?php
-require "navigationbar.php";
+require "navbar.php";
 ?>
 <div class="container">
 	<div class="well">
@@ -22,17 +22,15 @@ require "navigationbar.php";
 	</div>
 </div>
 
-<a href="add_opp_page.php" class="btn btn-primary" role="button">Add</a>
-
 <div class="container">
 	<div class="well">
 		<div class="row">
 			<div class="col-sm-6">
-			<h4> <a href="" class="view">#Title1</a> <small> Date Modified:DD-MM-YY</small></h4>
+			<h4> <a href="" class="view">#Title1</a> <small> Date Modified:DD-MM-YY</small></h4> 
 			</div>
-
+			
 			<div class="col-sm-6">
-			<a href="" class="btn btn-primary" role="button">Delete</a>
+			<a href="" class="btn btn-primary" role="button">Delete</a> 
 			</div>
 		</div>
 	</div>
@@ -41,13 +39,13 @@ require "navigationbar.php";
 	<div class="well">
 		<div class="row">
 			<div class="col-sm-6">
-			<h4> <a href="" class="view">#Title2 </a><small> Date Modified:DD-MM-YY</small></h4>
+			<h4> <a href="" class="view">#Title2 </a><small> Date Modified:DD-MM-YY</small></h4> 
 			</div>
-
+			
 			<div class="col-sm-6">
-			<a href="" class="btn btn-primary" role="button">Delete</a>
+			<a href="" class="btn btn-primary" role="button">Delete</a> 
 			</div>
-
+			
 		</div>
 	</div>
 </div>

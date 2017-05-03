@@ -12,19 +12,24 @@
 <body>
 <?php
     require'init.php';
-		require 'navigationbar.php';
+    if($_SESSION["usertype"] == "STUDENT"){
+    require 'nav_bar_update.html';
+    }
+    else{
+        require 'navbar.php';
+    }
 ?>
 
   <div class="container">
 <div class="jumbotron">
-
-	<?php
+    
+	<?php 
     require 'init.php';
     require 'functions.php';
-
+    
     $email = $_SESSION["user"];
     $result = get_student_details($email);
-
+    
     echo"
 	<h2><span class='glyphicon glyphicon-user'></span> Account Details</h2>
 	<p>
@@ -33,17 +38,17 @@
     <p>
 	student no : $result[0]
     <p>
-    email: $result[3]
-
+    email: $result[3]   
+	
 	<p>
-	college: $result[2]
-
+	college: $result[2]   
+	
 	<p>
 	<a id='infochange'>Request Info Change</a>
 	"?>
-
-
-
+	
+	
+	
 
 </div>
 </div>

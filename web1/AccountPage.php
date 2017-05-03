@@ -8,7 +8,7 @@
 </head>
 <body>
   <?php
-    require "navigationbar.php"
+    require "navigationbar.html"
    ?>
   <div class = "Jumbotron">
             <div  class="container">
