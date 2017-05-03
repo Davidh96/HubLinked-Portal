@@ -31,7 +31,7 @@ function get_student_details($semail){
     $stmt->bindParam(':se',$semail);
     $stmt->execute();
     $result = $stmt->fetch();
-        
+
     return $result;
 }
 
@@ -63,12 +63,12 @@ AND
 
 function pg_CheckUserExists($username,$pass){
     try{
-    //checking entered email with student email and password    
+    //checking entered email with student email and password
     global $myPDO;
     //$myPDO = pg_connect_to_database();
     $stmt = $myPDO->prepare("SELECT * from student where stu_email = :e AND stu_pw = :p");
     $stmtc = $myPDO->prepare("SELECT * FROM company WHERE comp_email = :e AND comp_pw = :p");
-    $stmti = $myPDO->prepare("SELECT * FROM institution WHERE inst_email = :e AND inst_pw = :p");    
+    $stmti = $myPDO->prepare("SELECT * FROM institution WHERE inst_email = :e AND inst_pw = :p");
     $stmt->bindParam(':e',$username);
     $stmti->bindParam(':e',$username);
     $stmtc->bindParam(':e',$username);
@@ -78,21 +78,21 @@ function pg_CheckUserExists($username,$pass){
     $stmt->execute();
     $stmtc->execute();
     $stmti->execute();
-    
+
     if($stmti->rowCount() > 0){
         //setting session user and type
         $_SESSION["user"] = "$username";
         $_SESSION["usertype"] = "INST";
         return 0;
     }
-    
+
     else if($stmt->rowCount() > 0){
         //setting session user and type
         $_SESSION["user"] = "$username";
         $_SESSION["usertype"] = "STUDENT";
         return 0;
     }
-     
+
     else if($stmtc->rowCount() > 0){
         //setting session user and type
         $_SESSION["user"] = "$username";
@@ -114,7 +114,13 @@ function get_table_data($table){
         //echo "query done";
            // echo "data: ";
         while( $row = $sql->fetch()){
-                echo " ", $row[1], " ,";
+                echo "** ", $row[0], " --";
+                echo "** ", $row[1], " --";
+                echo "** ", $row[2], " --";
+                echo "** ", $row[3], " --";
+                echo "** ", $row[4], " --";
+                echo "** ", $row[5], " --";
+                echo "</br>";
             }
         echo "</br>";
         //else{
@@ -147,7 +153,7 @@ table_name='$table';");
 function add_data_location($id,$n,$ci,$co){
     $myPDO = pg_connect_to_database();
     echo " 1 ";
-    
+
     $stmt = $myPDO->prepare("INSERT INTO public.location(loc_id, loc_name, city,country) VALUES (:id,:n,:ci,:co)");
     echo " 2 ";
     $stmt->bindParam(':id',$id);
@@ -201,12 +207,14 @@ function add_data_opp($oi,$ai,$li,$ot,$od,$oty){
     global $myPDO;
     //$myPDO = pg_connect_to_database();
     //$myPDO->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
-    echo "  ",$oi," . ";
-    echo $ai, " . ";
-    echo $li, " . ";
-    echo $ot, " . ";
-    echo $od, " . ";
-    echo $oty, " . ";
+    echo "<br></br>";
+    echo "  ",$oi,"=opid  ";
+    echo $ai, "=authid  ";
+    echo $li, "=locid ";
+    echo $ot, "=title ";
+    echo $od, "=desc ";
+    echo $oty, "=type ";
+
     $stmt = $myPDO->prepare("INSERT INTO opportunity(op_id, author_id, loc_id,op_title,op_desc,op_type) VALUES (:oi,:ai,:li,:ot,:od,:oty)");
     //$stmt->bindParam(':t',$tab);
     //echo "4.2";
@@ -218,8 +226,8 @@ function add_data_opp($oi,$ai,$li,$ot,$od,$oty){
     $stmt->bindParam(':oty',$oty);
     //echo "4.3";
     $stmt->execute();
-    //echo "4.4"; 
-    echo $stmt->errorInfo(), "</br>";
+    //echo "4.4";
+    // echo $stmt->errorInfo(), "</br>";
 }
 
 function add_data_app($id,$oid,$sn,$as){
@@ -276,71 +284,71 @@ function add_dummy_data(){
     add_data_location(4,"Bukgu","Daegu","South Korea");
     add_data_location(5,"Darmstadt","Darmstadt","Germany");
     get_table_data("location");
-    
+
     add_data_company("Intel","Intel Corp","Semiconductor manufacturing","opportunities@intel.com","intel");
     add_data_company("Microsoft","Microsoft Corp","Technology Comp","opportunities@microsoft.com","Microsoft");
     add_data_company("Google","Google Inc","Technology COmpany","opportunities@google.com","Google");
     add_data_company("RedHat","Red Hat Software","opportunites@redhat.com","Redhat");
     get_table_data("company");
-    
+
     echo "--------";
-    
+
     add_data_inst("DIT","Dublin Institute of Technology",1,"exchange@dit.ie","Dit");
     add_data_inst("BUAA","Beihang University",3,"exchange@buaa.cn","Buaa");
     add_data_inst("KNU","Kyungpook National University",4,"exchange@knu.com","Knu");
     add_data_inst("H-da","Hochschule Darmstadt",5,"exchange@h-da.com","Hda");
     get_table_data("institution");
-    
+
     echo "-------";
-    
+
     add_data_student("C14464428","David Hunt","DIT","c14464428@dit.ie","C14464428");
     add_data_student("D14122804","Vardaan Sharma","DIT","d14122804@dir.ie","D14122804");
     add_data_student("Jon Doe","C1111","DIT","c1111@dit.ie","C1111");
     get_table_data("student");
-    
+
     echo "--------";
-    
+
     add_data_opp(1,"Intel",3,"Intel AI Academy","The Intel® Nervana™ AI Academy was created to increase accessibility to data, tools, training, and intelligent machines for a broad community of developers, academics, and start-ups.","Computing");
     add_data_opp(2,"Microsoft",1,"Software Engineer","Are you passionate about writing shared systems and services which are used across the company to deliver applications and online content every day? Do you have a passion for enabling our company to deliver our products to an ever-evolving worldwide landscape of languages, cultures, and local markets?","Computing");
     get_table_data("opportunity");
-    
+
     echo "--------";
-    
+
     add_data_app(1,1,"D14122804","Pending");
     add_data_app(2,1,"D14122804","Pending");
     add_data_app(3,1,"D14122804","Denied");
     get_table_data("application");
-    
+
 }
 
 function jobsearch(){
-    
+
 }
 
 function collegesearch(){
-    
+
 }
 
 function get_opps(){
     global $myPDO;
     $email = $_SESSION["user"];
-    if($_SESSION["usertype"] == "COMPANY"){        
+    if($_SESSION["usertype"] == "COMPANY"){
     $sql = $myPDO->query("SELECT op_title FROM opportunity JOIN company ON author_id = comp_id WHERE comp_email = '$email'");
     return $sql;
-    
+
     }
 }
 
 function add_opportunity($t, $email, $type, $desc, $title, $loc){
-    
+
     global $myPDO;
-    //getting the id of the college/company 
+    //getting the id of the college/company
     //echo "1";
     if($t){
         //echo "1.1";
         $sql = $myPDO->query("SELECT * FROM institution WHERE inst_email='$email'");
-        //echo " $email";
-        while( $row = $sql->fetch()){    
+        echo " $email";
+        while( $row = $sql->fetch()){
             $id = $row[0];
             }
     }
@@ -348,15 +356,23 @@ function add_opportunity($t, $email, $type, $desc, $title, $loc){
         $sql = $myPDO->query("SELECT * FROM company WHERE comp_email = '$email'");
         while( $row = $sql->fetch()){
                 $id = $row[0];
+                echo $id;
         }
-        
+
     }
     //echo "2";
     //getting location id from location name
-    $sql = $myPDO->query("SELECT loc_id FROM location WHERE loc_name = '$loc'");
+    $sql = $myPDO->query("SELECT * FROM location WHERE loc_name = '$loc'");
         while( $row = $sql->fetch()){
                 $loc_id = $row[0];
+                echo $loc_id;
         }
+
+  // $sql = $myPDO->query("SELECT * FROM location WHERE comp_email = '$email'");
+  //     while( $row = $sql->fetch()){
+  //             $loc_id = $row[2];
+  //             echo $loc_id;
+  //     }
     //echo "3";
     //checking lsat opportunity id
     $sql = $myPDO->query("SELECT * FROM opportunity");
@@ -364,12 +380,12 @@ function add_opportunity($t, $email, $type, $desc, $title, $loc){
                 $opp_id = $row[0];
                 echo $opp_id;
         }
-    //echo "4  ";
+    echo "4  ";
     $opp_id+=1;
     echo $opp_id;
-    
+
     add_data_opp($opp_id,$id,$loc_id,$title,$desc,$type);
     //echo "5";
     //return true;
-}   
+}
 ?>
