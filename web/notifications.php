@@ -11,7 +11,7 @@
 <?php
     require "nav_bar_update.html"
 ?>
-	div class="page-header">
+	<div class="page-header">
     <h4>Notifications</h4>
 </div>
 <div class="notifications">
