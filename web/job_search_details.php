@@ -10,7 +10,7 @@
 
 <body>
 <?php
-require "nav_bar_update.html";
+require "navigationbar.php";
 ?>
 
 <div class="container">

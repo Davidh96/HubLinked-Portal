@@ -103,7 +103,7 @@ echo '
             <td> $row[1]</td>
             <td>$row[0]</td>
             <td>$row[2]</td>
-            <td><a href='job_search_details.php> Click here </a> </td>
+            <td><a href='job_search_details.php'> Click here </a> </td>
         </tr>";
             }
 echo '
