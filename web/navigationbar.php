@@ -12,21 +12,21 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="Homepage.php"><img src = "images/logo.png" style="width:70px;height:50px" id = "logo"></a>
+      <a class="navbar-brand" href="index.php"><img src = "images/logo.png" style="width:70px;height:50px" id = "logo"></a>
     </div>
 
     <ul class="nav navbar-nav navbar-right">
-	    <li><a href="Homepage.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+	    <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 			<?php
 				if($_SESSION["usertype"] != "STUDENT"){
 					echo '<li><a href="view_applicants.php"><span class="glyphicon glyphicon-bell"></span> Opportunities</a></li>';
 				}
-            
-                if($_SESSION["usertype"] == "STUDENT"){
-	               echo '<li><a href="notifications.php"><span class="glyphicon glyphicon-bell">}</span> Notifications</a></li> 
-			<li><a href="job_search.php"><span class="glyphicon glyphicon-lock"></span> Jobs</a></li>
-			<li><a href="college_search.php"><span class="glyphicon glyphicon-book"></span> Colleges</a></li>'; 
-                }
+
+        if($_SESSION["usertype"] == "STUDENT"){
+         echo '<li><a href="notifications.php"><span class="glyphicon glyphicon-bell"></span> Notifications</a></li>
+				 <li><a href="job_search.php"><span class="glyphicon glyphicon-lock"></span> Jobs</a></li>
+				 <li><a href="college_search.php"><span class="glyphicon glyphicon-book"></span> Colleges</a></li>';
+        }
         ?>
 			<li><a href="user_account.php"><span class="glyphicon glyphicon-user"></span> Me</a></li>
 		<li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> Log out</a></li>

@@ -22,7 +22,7 @@ require "navigationbar.php";
 	</div>
 </div>
 
-<a href="add_opp_page.php" class="btn btn-primary" role="button">Add</a>
+<a href="add_opp_page.php" class="btn btn-primary" role="button" style="align:center">Add</a>
 
 <div class="container">
 	<div class="well">
