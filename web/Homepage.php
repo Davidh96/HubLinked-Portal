@@ -11,16 +11,29 @@
 <body>
 <?php
 require "navigationbar.php";
+
+$email = $_SESSION["user"];
+if($_SESSION["usertype"] == "STUDENT"){
+		$result = get_student_details($email);
+}
+else if($_SESSION["usertype"] == "COMPANY"){
+		$result = get_company_details($email);
+}
+else{
+		$result = get_inst_details($email);
+}
+
+
 ?>
 
 <div class="container">
 	<div class="row">
 		<div class="col1 col-sm-8">
 			<div class="well">
-				<h4>Name</h4>
-				Location<br>
-				Affiliations: <a href="">DIT</a>,<a href="">Beihang Univ.</a><br><br>
-				<a href="" class="btn btn-primary" role="button">Edit Profile</a> <br><br>
+				<h2>Welcome <?php echo $result[1]?></h2>
+				<?php echo $result[2]?><br>
+				<?php echo $result[3]?><br>
+				<a href="user_account.php" class="btn btn-primary" role="button">View Profile</a> <br><br>
 			</div>
 
 
@@ -38,14 +51,19 @@ require "navigationbar.php";
 			<div class="row content">
 				<div class="col-sm-4 sidenav ">
 
-					<p>?? Opportunities advertised</p>
-					<p>?? Student Exchanges</p><br>
 
-					<h4>Applications</h4>
-					Few list of students(hyperlink) who applied<br>
+					<h4>Colleges</h4>
+					<?php
+					$sql = $myPDO->query("SELECT * FROM institution limit 3");
+					while($row = $sql->fetch()){
+									$id = $row[1];
+									echo $id, '</br>';
+					}
+					?>
+				<br>
 					<a href="view_applicants.php">View Applicants</a><hr>
 
-                    <h4>Posted Opportunities</h4>
+          <h4>Posted Opportunities</h4>
 					Few lists of posted opportunities<br>
 					<a href="view_opptnity.php">Manage</a>
 

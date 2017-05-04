@@ -45,7 +45,7 @@
     <p>
     email : $result[3]
     <p>";
-	
+
     if($_SESSION["usertype"] == "STUDENT"){
     echo "
 	college: $result[2]
@@ -54,7 +54,6 @@
 	<a id='infochange'>Request Info Change</a>
 	";}
     ?>
-
 
 
 

@@ -47,6 +47,21 @@ function get_inst_details($semail){
     return $result;
 }
 
+function get_inshbt_details(){
+    //$conn = pg_connect_to_database();
+    global $myPDO;
+    $sql = $myPDO->query("SELECT * FROM institution");
+    while( $row = $sql->fetch()){
+            $id = $row[0];
+            echo $id;
+    }
+    $stmt = $myPDO->prepare("SELECT loc_name, inst_name,inst_id, inst_email from institution join location on location = loc_id");
+    $stmt->execute();
+    $result = $stmt->fetch();
+
+    return $result;
+}
+
 function get_company_details($semail){
     //$conn = pg_connect_to_database();
     global $myPDO;
