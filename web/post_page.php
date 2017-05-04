@@ -44,10 +44,7 @@ echo "
         while( $row = $sql->fetch()){
                 echo "<option>",$row[1],"</option>";
             }
-
-			//<option>$mtype</option>
-			//<!--<option>Student Exchange</option>-->
-		echo "</select>
+echo "</select>
 
 	</div>
 

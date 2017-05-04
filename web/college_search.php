@@ -14,55 +14,53 @@
 <?php
 
      require 'functions.php';
+    //if college has been set in the search bar
     if(isset($_GET["college"]) && $_GET["college"]!=""){
         global $myPDO;
         $college = $_GET["college"];
+        //if course has been set too
         if( isset($_GET["course"])  && $_GET["course"]!=""){
             $course = $_GET["course"];
+            //if location has been set
             if(isset($_GET["location"]) && $_GET["location"]!=""){
-                //echo "all";
                 $loc = $_GET["location"];
-               $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name LIKE '%$collge%' AND loc_name LIKE '%$loc%' AND op_type LIKE '%$course%'");
-                echo "ad";
-            }else{
-                 $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id WHERE inst_name LIKE '%$collge%' AND op_type LIKE '%$course%'");
-                echo "course + colllege";
-            }
+               $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name ILIKE '%$collge%' AND loc_name ILIKE '%$loc%' AND op_type ILIKE '%$course%'");
+                }
+            else{ //if location has not been set
+                 $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id WHERE inst_name ILIKE '%$collge%' AND op_type ILIKE '%$course%'");
+                }
         }
-
+        //if college has not been set
+        //if location has been set
         else if(isset($_GET["location"]) && $_GET["location"]!=""){
-             $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name LIKE '%$collge%' AND loc_name LIKE '%$loc%'");
-            echo " college + location";
-        }
+             $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name ILIKE '%$collge%' AND loc_name ILIKE '%$loc%'");
+            }
+        //if only college has been set
         else {
-            $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name LIKE '%$collge%'");
-            echo "college";
-
+            $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE inst_name ILIKE '%$collge%'");
+            
              }
     }
+    //if course has been set
     else if(isset($_GET["course"]) && $_GET["course"]!=""){
-
+        //if location has been set
         if(isset($_GET["location"]) && $_GET["location"]!=""){
-            $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id WHERE op_type LIKE '%$course%'");
-            echo "course + location";
-        }
+            $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id WHERE op_type ILIKE '%$course%'");
+            }
         else{
-
-            $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE op_type LIKE '%$course%'");
-            echo "course";
-        }
+            //if location has not been set
+            $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE op_type ILIKE '%$course%'");
+            }
 
     }
+    //if only location has been set
     else if(isset($_GET["location"]) && $_GET["location"]!=""){
-        $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE loc_name LIKE '%$loc%'");
-                echo "ad";
-        echo "location";
-    }
+        $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id) WHERE loc_name ILIKE '%$loc%'");
+            }
     else{
+        //if nothing has been set
         $stmt = $myPDO->query(" SELECT op_title,inst_name,loc_name from opportunity JOIN institution ON author_id = inst_id JOIN location using(loc_id)");
-                echo "ad";
-        echo "none";
-    }
+        }
 
 
 

@@ -5,13 +5,6 @@ $title = $_GET["name"];
 $myPDO = pg_connect_to_database();
 $sql = $myPDO->query("SELECT stu_name, inst_name FROM student JOIN institution ON stu_inst = inst_id JOIN application using(stu_no) JOIN opportunity using(op_id) WHERE op_title = '$title'");
 
-//$returnstring = "";
-
-//echo "SELECT stu_name, inst_name FROM student JOIN institution ON stu_inst = inst_id JOIN application using(stu_no) JOIN opportunity using(op_id) WHERE op_title = '$title'";
-
-//while($row = $sql->fetch()){
-//echo $row[0];
-//}
 
 while($row = $sql->fetch()){
        $r = "<div class='container'>
@@ -30,11 +23,6 @@ while($row = $sql->fetch()){
     
     $returnstring.=$r;
 }
-
-
-//$row = $sql->fetch();
-
-
 echo $returnstring;
 
 ?>

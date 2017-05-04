@@ -50,10 +50,10 @@ require "navigationbar.php";
 
 		<div class="col-sm-10 list" id="c">
 				<div class='container-fluid'>
-					<div class='row'>
-						<div class='col-sm-12 title' >
+                    <div class='col-sm-12 title' id="title">
 							<h4 id ="title">Click on an opportunity to see its applicants</h4>
 						</div>
+					<div class='row' id="in">
 					</div>
 				</div><br>
 
@@ -67,15 +67,17 @@ $(document).ready(function(){
 
     $("#opps li").click(function(){
         var title = $(this).text();
-        $("#title").text(title);
 
         $.ajax({
             url : "get_applicants.php",
             type: 'GET',
             data: "name="+title,
             success: function(result){
-                $("#c").empty();
-                $("#c").append(result);
+                //$("#c").empty();
+                
+                $("#title").text(title);
+                $("in").empty();
+                $("#in").append(result);
             }
         })
 
