@@ -182,3 +182,46 @@ body{padding:15px}
 		margin-right: 50px;
 		width:800px; 
 }
+
+.row.content{
+	height:1500px;
+}
+
+.sidenav{
+	height:1000px;
+}
+
+#advLink{
+	background-color:#f5f5f5;
+
+}
+select, textarea,input {
+	max-width: 400px;
+}
+
+.view{
+	color:black;
+}
+
+.title{
+	background-color:#f5f5f5;
+}
+
+.name{
+	font-size:140%;
+	color:black;
+}
+.bigFont{
+	font-size:20px;
+}
+h3{
+	text-align: center;
+}
+
+.glyphicon.glyphicon-plus-sign{
+	font-size:14px;
+}
+
+#manage{
+	font-size:14px;
+}

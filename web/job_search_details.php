@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="clientPages.css">
+	<link rel="stylesheet" type="text/css" media="all" href="/Hublink_new/Hublinked-Portal/web/style.css">
 	<link rel="stylesheet" href="stylesheets/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -40,8 +40,8 @@ $row=get_app_details($opID);
 <div class="col1 col-sm-7">
 			<div class="well">
 				<h4><small>Description</small></h4>
-				<?php echo $row[4];?>
-				<br></br>
+				<?php echo $row[4];
+				?>
 			</div>
 		</div>
 	</div>

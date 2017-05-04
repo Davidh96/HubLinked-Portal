@@ -24,7 +24,7 @@ while($row = $sql->fetch()){
 							<a href='' class='btn btn-primary' role='button'>Accept</a>
 							<a href='' class='btn btn-primary' role='button'>Decline</a> 
 						</div>
-					</div>
+					</div><br><hr>
 
 				</div>";
     
