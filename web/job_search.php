@@ -15,7 +15,7 @@ THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
     </head>
 <body>
 <?php
-    require 'nav_bar_update.html';
+    require 'navigationbar.php';
     require 'functions.php';
 
     /*
