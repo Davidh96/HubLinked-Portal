@@ -19,7 +19,7 @@
 	    <li><a href="Homepage.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 			<?php
 				if($_SESSION["usertype"] != "STUDENT"){
-					echo '<li><a href="view_opptnity.php"><span class="glyphicon glyphicon-bell"></span> Opportunities</a></li>';
+					echo '<li><a href="view_applicants.php"><span class="glyphicon glyphicon-bell"></span> Opportunities</a></li>';
 				}
             
                 if($_SESSION["usertype"] == "STUDENT"){

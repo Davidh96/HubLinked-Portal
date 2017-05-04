@@ -29,24 +29,22 @@ require "navigationbar.php";
 </div>
 <div class='container'>
 	<div class='row'>
-<?php
-require 'functions.php';
-    $result1 = get_opps();
 
-echo "<div class='col-sm-2 sidenav' id='advLink'>
+
+<div class='col-sm-2 sidenav' id='advLink'>
 	<h4>Opportunities</h4>
-	<ul class='nav nav-pills nav-stacked' id='opps'>";
-      while( $row = $result1->fetch()){
+	<ul class='nav nav-pills nav-stacked' id='opps'>
+    <?php
+        require 'functions.php';
+        $result1 = get_opps();
+        while( $row = $result1->fetch()){
             echo "<li><a>$row[0]</a></li>";
-      };
-                  //<li class='active'><a >#Title1</a></li>
-		//#Title2
+        };
+    ?>
+    </ul>
+</div>
 
-          echo "</ul>
-
-		</div>
-
-	";?>
+	
 		<div class="col-sm-10 list" id="c">
 				<div class='container-fluid'>
 					<div class='row'>
@@ -57,22 +55,6 @@ echo "<div class='col-sm-2 sidenav' id='advLink'>
 				</div><br>
 
                 <div id= try></div>
-
-			<!--<div class='container'><div class='row'><div class='col-sm-6'><a class='name'>Charles Acquah</a><br><a>Dublin Institute of Technology</a> <br/></div><div class='col-sm-6'><button class='btn btn-primary'>Accept</button><button class='btn btn-primary'>Decline</button</div></div></div><br>
-
-				<div class='container'>
-					<div class='row'>
-						<div class='col-sm-6'>
-							<a class='name'>David Hunt</a><br>
-							<a>Beihang University</a> <br/>
-						</div>
-						<div class='col-sm-6'>
-							<a href='' class='btn btn-primary' role='button'>Accept</a>
-							<a href='' class='btn btn-primary' role='button'>Decline</a>
-						</div>
-					</div//>
-
-				</div>	-->
 			</div>
 	</div>
 </div>
@@ -80,8 +62,7 @@ echo "<div class='col-sm-2 sidenav' id='advLink'>
 <script>
 $(document).ready(function(){
 
-    $("#opps li").click(function(){//on('click','li',function(){
-        //alert($(this).text());
+    $("#opps li").click(function(){
         var title = $(this).text();
         $("#title").text(title);
 
@@ -90,10 +71,7 @@ $(document).ready(function(){
             type: 'GET',
             data: "name="+title,
             success: function(result){
-                //alert("hb");
-                //location.reload();
-                //alert(result);
-                //$("#c").append("asd");
+                $("#c").empty();
                 $("#c").append(result);
             }
         })
