@@ -1,5 +1,5 @@
 <!--
-THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
+THI S PAGE DEALS WITH DISPLAYING SEARCH RESULTS
 -->
 <!DOCTYPE html>
 <html>
@@ -22,6 +22,7 @@ THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
     Search is formatted like this as each search field is individual when "submit" is clicked
     */
     global $myPDO;
+    $test;
     $company = $_GET["company"];
     $loc = $_GET["location"];
     $industry = $_GET["field"];
@@ -29,20 +30,20 @@ THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
     if(isset($_GET["company"]) && $_GET["company"]!="") {
         //search by company
         echo 'searching by company';
-        $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE comp_name LIKE '%$company%'");
+        $stmt = $myPDO->query(" SELECT op_id,op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE comp_name LIKE '%$company%'");
     }
     if(isset($_GET["field"])  && $_GET["field"]!="") {
         //search by opportunity field
         echo 'searching by field of industry';
-        $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id WHERE op_type LIKE '%$industry%'");
+        $stmt = $myPDO->query(" SELECT op_id, op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id WHERE op_type LIKE '%$industry%'");
     }
     if(isset($_GET["location"]) && $_GET["location"]!="") {
         echo 'searching by job location';
-        $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE loc_name LIKE '%$loc%'");
+        $stmt = $myPDO->query(" SELECT op_id, op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) WHERE loc_name LIKE '%$loc%'");
     }
     else{
         //else output all
-        $stmt = $myPDO->query(" SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id)");
+        $stmt = $myPDO->query(" SELECT op_id, op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id)");
     }
 
 //OUTPUTS SEARCH RESULTS
@@ -100,11 +101,11 @@ echo '
         </tr>';
         while ($row = $stmt->fetch()){
         echo "<tr>
-            <td> $row[1]</td>
-            <td>$row[0]</td>
-            <td>$row[2]</td>
-            <td><a href='job_search_details.php'> Click here </a> </td>
-        </tr>";
+            <td> $row[2]</td>
+            <td>$row[1]</td>
+            <td>$row[3]</td>";
+
+            echo "<td><a href='job_search_details.php?id=" . $row[0] . "'> Click here </a> </tr>";
             }
 echo '
     </table>

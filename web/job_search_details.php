@@ -11,42 +11,36 @@
 <body>
 <?php
 require "navigationbar.php";
-?>
+require "functions.php";
+$opID = $_GET["id"];
 
+
+$row=get_app_details($opID);
+?>
+<div class="container">
+	<div class="well">
+		<div class="row">
+			<div class="col-sm-12">
+				<h3><?php echo $row[3];?></h3>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="container">
 	<div class="row">
 		<div class="col1 col-sm-4">
 			<div class="well">
-				<h4>Company</h4>
-				<p>Name:</p>
+				<h4>Author: <?php echo $row[3];?></h4>
+				<p>Type:  <?php echo $row[5];?></p>
 				<p>Email</p>
 				<p>Location:</p>
 				<p></p>
 			</div>
-				<div class="well">
-					<h4>Opportumity</h4>
-					<p>Industry:</p>
-					<p>Type:</p>
-				</div>
-				<div class="well">
-					<h4>Application</h4>
-					<p>Type:</p>
-					<p>Status:</p>
-				</div>
 		</div>
 <div class="col1 col-sm-7">
 			<div class="well">
 				<h4><small>Description</small></h4>
-				<br></br>
-			</div>
-			<br></br>
-			<div class="well">
-				<h4><small>Description</small></h4>
-				<br></br>
-			</div>
-			<br></br>
-			<div class="well">
-				<h4><small>Description</small></h4>
+				<?php echo $row[4];?>
 				<br></br>
 			</div>
 		</div>

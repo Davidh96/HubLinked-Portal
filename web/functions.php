@@ -62,6 +62,19 @@ function get_inshbt_details(){
     return $result;
 }
 
+function get_app_details($opid){
+  //$conn = pg_connect_to_database();
+  global $myPDO;
+  $stmt = $myPDO->prepare("SELECT * from opportunity where op_id = :se");
+  $stmt->bindParam(':se',$opid);
+  $stmt->execute();
+  $result = $stmt->fetch();
+
+  return $result;
+
+}
+
+
 function get_company_details($semail){
     //$conn = pg_connect_to_database();
     global $myPDO;

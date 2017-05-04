@@ -48,14 +48,16 @@ else{
 										<td> Click here for informaton </td>
 						</tr>
 						<?php
-						$stmt = $myPDO->query("SELECT op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) ORDER BY op_id DESC limit 10");
+						$stmt = $myPDO->query("SELECT op_id, op_title,comp_name,loc_name from opportunity JOIN company ON author_id = comp_id JOIN location using(loc_id) ORDER BY op_id DESC limit 10");
 
 						while ($row = $stmt->fetch()){
 						echo "<tr>
-								<td> $row[1]</td>
-								<td>$row[0]</td>
-								<td>$row[2]</td>
-								<td> Click here for informaton </td>
+								<td> $row[2]</td>
+								<td>$row[1]</td>
+								<td>$row[3]</td>
+
+  						";
+								echo "<td><a href='job_search_details.php?id=" . $row[0] . "'> Click here </a> </td>
 						</tr>";
 								}
 							?>
@@ -91,15 +93,14 @@ else{
 						echo '<table width="200" class="table table-condensed">';
 
 
-						$stmt = $myPDO->prepare("SELECT op_title from opportunity JOIN company ON author_id = comp_id where comp_email = :se limit 5");
+						$stmt = $myPDO->prepare("SELECT op_id, op_title from opportunity JOIN company ON author_id = comp_id where comp_email = :se limit 5");
 						$stmt->bindParam(':se',$email);
 						$stmt->execute();
 
 						while ($row = $stmt->fetch()){
 						echo "<tr>
-								<td> $row[0]</td>
-								<td> Click here for informaton </td>
-						</tr>";
+								<td> $row[1]</td>";
+								echo "<td><a href='job_search_details.php?id=" . $row[0] . "'> Click here </a> </tr>";
 								}
 						}
 						?>
