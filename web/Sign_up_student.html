@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="	"></script>
+	  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	   <link rel="stylesheet" href="style.css">
+	</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="home.php"><img src = "images/full_logo.png" style="width:90px;height:75px; margin-top:-30px;" id = "logo"></a>
+    </div>
+      <ul class="nav navbar-nav navbar-right">
+		<li><a href="logout.php"><span class="glyphicon glyphicon-user"></span> Already a member - sign in</a></li>
+      </ul>
+    </div>
+</nav>
+
+
+  <div class="container">
+<div class="jumbotron">
+
+
+<h2>How to sign up</h2>
+<div style = "position:relative;">
+1. Fill in your details in the below form </br>
+2. Send the details by pressing the button </br>
+3. We will check your details </br>
+4. If your details are correct and you are a valid student we will send you an email of conformation
+</div>
+
+<div class="container">
+  <h2><span class="glyphicon glyphicon-user"></span>  Student sign up</h2>
+  <form class="form-horizontal" action="/action_page.php">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="first_name">First name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="first_name" placeholder="Enter first name" name="first_name">
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="control-label col-sm-2" for="second_name">Second name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="second_name" placeholder="Enter second name" name="second_name">
+      </div>
+    </div>
+	 <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pswrd">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" id="pswrd" placeholder="Enter password" name="pswrd">
+      </div>
+    </div> <div class="form-group">
+      <label class="control-label col-sm-2" for="re-pswrd">Re enter Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" id="re-pswrd" placeholder="Re-Enter password" name="re-pswrd">
+      </div>
+    </div>
+	
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Send your details</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+</div>
+</div>
+
+
+
+</body>
+</html>
