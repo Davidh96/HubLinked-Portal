@@ -15,7 +15,7 @@ THIS PAGE DEALS WITH DISPLAYING SEARCH RESULTS
     </head>
 <body>
 <?php
-    require 'navigationbar.php';
+    require 'nav_bar_update.html';
     require 'functions.php';
 
     /*
@@ -103,7 +103,7 @@ echo '
             <td> $row[1]</td>
             <td>$row[0]</td>
             <td>$row[2]</td>
-            <td> Click here for informaton </td>
+            <td><a href='job_search_details.php> Click here </a> </td>
         </tr>";
             }
 echo '
